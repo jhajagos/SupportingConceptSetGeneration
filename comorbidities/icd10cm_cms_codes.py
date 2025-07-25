@@ -5,7 +5,7 @@ def main(file_name="./data/icd10cm_codes_2022.txt"):
 
         code_list = []
         for line in f:
-            code = line[0:6].strip()
+            code = line[0:7].strip()
             description=line[7:].strip()
             code_list += [[code,description]]
 
