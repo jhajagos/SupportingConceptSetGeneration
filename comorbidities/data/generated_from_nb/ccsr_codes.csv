@@ -1,0 +1,555 @@
+code,code_type,description
+BLD001,CCSR_ICD10CM,Nutritional anemia
+BLD002,CCSR_ICD10CM,Hemolytic anemia
+BLD003,CCSR_ICD10CM,Aplastic anemia
+BLD004,CCSR_ICD10CM,Acute posthemorrhagic anemia
+BLD005,CCSR_ICD10CM,Sickle cell trait/anemia
+BLD006,CCSR_ICD10CM,Coagulation and hemorrhagic disorders
+BLD007,CCSR_ICD10CM,Diseases of white blood cells
+BLD008,CCSR_ICD10CM,Immunity disorders
+BLD009,CCSR_ICD10CM,Postprocedural or postoperative complications of the spleen
+BLD010,CCSR_ICD10CM,Other specified and unspecified hematologic conditions
+CIR001,CCSR_ICD10CM,Chronic rheumatic heart disease
+CIR002,CCSR_ICD10CM,Acute rheumatic heart disease
+CIR003,CCSR_ICD10CM,Nonrheumatic and unspecified valve disorders
+CIR004,CCSR_ICD10CM,Endocarditis and endocardial disease
+CIR005,CCSR_ICD10CM,Myocarditis and cardiomyopathy
+CIR006,CCSR_ICD10CM,Pericarditis and pericardial disease
+CIR007,CCSR_ICD10CM,Essential hypertension
+CIR008,CCSR_ICD10CM,Hypertension with complications and secondary hypertension
+CIR009,CCSR_ICD10CM,Acute myocardial infarction
+CIR010,CCSR_ICD10CM,Complications of acute myocardial infarction
+CIR011,CCSR_ICD10CM,Coronary atherosclerosis and other heart disease
+CIR012,CCSR_ICD10CM,Nonspecific chest pain
+CIR013,CCSR_ICD10CM,Acute pulmonary embolism
+CIR014,CCSR_ICD10CM,Pulmonary heart disease
+CIR015,CCSR_ICD10CM,Other and ill-defined heart disease
+CIR016,CCSR_ICD10CM,Conduction disorders
+CIR017,CCSR_ICD10CM,Cardiac dysrhythmias
+CIR018,CCSR_ICD10CM,Cardiac arrest and ventricular fibrillation
+CIR019,CCSR_ICD10CM,Heart failure
+CIR020,CCSR_ICD10CM,Cerebral infarction
+CIR021,CCSR_ICD10CM,Acute hemorrhagic cerebrovascular disease
+CIR022,CCSR_ICD10CM,Sequela of hemorrhagic cerebrovascular disease
+CIR023,CCSR_ICD10CM,Occlusion or stenosis of precerebral or cerebral arteries without infarction
+CIR024,CCSR_ICD10CM,Other and ill-defined cerebrovascular disease
+CIR025,CCSR_ICD10CM,Sequela of cerebral infarction and other cerebrovascular disease
+CIR026,CCSR_ICD10CM,Peripheral and visceral vascular disease
+CIR027,CCSR_ICD10CM,Arterial dissections
+CIR028,CCSR_ICD10CM,Gangrene
+CIR029,CCSR_ICD10CM,Aortic; peripheral; and visceral artery aneurysms
+CIR030,CCSR_ICD10CM,Aortic and peripheral arterial embolism or thrombosis
+CIR031,CCSR_ICD10CM,Hypotension
+CIR032,CCSR_ICD10CM,Other specified and unspecified circulatory disease
+CIR033,CCSR_ICD10CM,Acute phlebitis; thrombophlebitis and thromboembolism
+CIR034,CCSR_ICD10CM,Chronic phlebitis; thrombophlebitis and thromboembolism
+CIR035,CCSR_ICD10CM,Varicose veins of lower extremity
+CIR036,CCSR_ICD10CM,Postthrombotic syndrome and venous insufficiency/hypertension
+CIR037,CCSR_ICD10CM,Vasculitis
+CIR038,CCSR_ICD10CM,Postprocedural or postoperative circulatory system complication
+CIR039,CCSR_ICD10CM,Other specified diseases of veins and lymphatics
+DEN001,CCSR_ICD10CM,Any dental condition including traumatic injury
+DEN002,CCSR_ICD10CM,Nontraumatic dental conditions
+DEN003,CCSR_ICD10CM,"Caries, periodontitis, and other preventable dental conditions"
+DIG001,CCSR_ICD10CM,Intestinal infection
+DIG002,CCSR_ICD10CM,Disorders of teeth and gingiva
+DIG003,CCSR_ICD10CM,Diseases of mouth; excluding dental
+DIG004,CCSR_ICD10CM,Esophageal disorders
+DIG005,CCSR_ICD10CM,Gastroduodenal ulcer
+DIG006,CCSR_ICD10CM,Gastrointestinal and biliary perforation
+DIG007,CCSR_ICD10CM,Gastritis and duodenitis
+DIG008,CCSR_ICD10CM,Other specified and unspecified disorders of stomach and duodenum
+DIG009,CCSR_ICD10CM,Appendicitis and other appendiceal conditions
+DIG010,CCSR_ICD10CM,Abdominal hernia
+DIG011,CCSR_ICD10CM,Regional enteritis and ulcerative colitis
+DIG012,CCSR_ICD10CM,Intestinal obstruction and ileus
+DIG013,CCSR_ICD10CM,Diverticulosis and diverticulitis
+DIG014,CCSR_ICD10CM,Hemorrhoids
+DIG015,CCSR_ICD10CM,Anal and rectal conditions
+DIG016,CCSR_ICD10CM,Peritonitis and intra-abdominal abscess
+DIG017,CCSR_ICD10CM,Biliary tract disease
+DIG018,CCSR_ICD10CM,Hepatic failure
+DIG019,CCSR_ICD10CM,Other specified and unspecified liver disease
+DIG020,CCSR_ICD10CM,Pancreatic disorders (excluding diabetes)
+DIG021,CCSR_ICD10CM,Gastrointestinal hemorrhage
+DIG022,CCSR_ICD10CM,Noninfectious gastroenteritis
+DIG023,CCSR_ICD10CM,Noninfectious hepatitis
+DIG024,CCSR_ICD10CM,Postprocedural or postoperative digestive system complication
+DIG025,CCSR_ICD10CM,Other specified and unspecified gastrointestinal disorders
+EAR001,CCSR_ICD10CM,Otitis media
+EAR002,CCSR_ICD10CM,Diseases of middle ear and mastoid (except otitis media)
+EAR003,CCSR_ICD10CM,Diseases of inner ear and related conditions
+EAR004,CCSR_ICD10CM,Hearing loss
+EAR005,CCSR_ICD10CM,Postprocedural or postoperative ear and/or mastoid process complication
+EAR006,CCSR_ICD10CM,Other specified and unspecified disorders of the ear
+END001,CCSR_ICD10CM,Thyroid disorders
+END002,CCSR_ICD10CM,Diabetes mellitus without complication
+END003,CCSR_ICD10CM,Diabetes mellitus with complication
+END004,CCSR_ICD10CM,"Diabetes mellitus, Type 1"
+END005,CCSR_ICD10CM,"Diabetes mellitus, Type 2"
+END006,CCSR_ICD10CM,"Diabetes mellitus, due to underlying condition, drug or chemical induced, or other specified type"
+END007,CCSR_ICD10CM,Nutritional deficiencies
+END008,CCSR_ICD10CM,Malnutrition
+END009,CCSR_ICD10CM,Obesity
+END010,CCSR_ICD10CM,Disorders of lipid metabolism
+END011,CCSR_ICD10CM,Fluid and electrolyte disorders
+END012,CCSR_ICD10CM,Cystic fibrosis
+END013,CCSR_ICD10CM,Pituitary disorders
+END014,CCSR_ICD10CM,Postprocedural or postoperative endocrine or metabolic complication
+END015,CCSR_ICD10CM,Other specified and unspecified endocrine disorders
+END016,CCSR_ICD10CM,Other specified and unspecified nutritional and metabolic disorders
+END017,CCSR_ICD10CM,Sequela of malnutrition and other nutritional deficiencies
+EXT001,CCSR_ICD10CM,External cause codes: cut/pierce; initial encounter
+EXT002,CCSR_ICD10CM,External cause codes: drowning/submersion; initial encounter
+EXT003,CCSR_ICD10CM,External cause codes: fall; initial encounter
+EXT004,CCSR_ICD10CM,External cause codes: fire/burn; initial encounter
+EXT005,CCSR_ICD10CM,External cause codes: firearm; initial encounter
+EXT006,CCSR_ICD10CM,External cause codes: machinery; initial encounter
+EXT007,CCSR_ICD10CM,External cause codes: motor vehicle traffic (MVT); initial encounter
+EXT008,CCSR_ICD10CM,External cause codes: pedal cyclist; not MVT; initial encounter
+EXT009,CCSR_ICD10CM,External cause codes: pedestrian; not MVT; initial encounter
+EXT010,CCSR_ICD10CM,External cause codes: transport; not MVT; initial encounter
+EXT011,CCSR_ICD10CM,External cause codes: natural/environment; initial encounter
+EXT012,CCSR_ICD10CM,External cause codes: bites; initial encounter
+EXT013,CCSR_ICD10CM,External cause codes: overexertion; initial encounter
+EXT014,CCSR_ICD10CM,External cause codes: poisoning by drug
+EXT015,CCSR_ICD10CM,External cause codes: poisoning by non-drug
+EXT016,CCSR_ICD10CM,External cause codes: struck by; against; initial encounter
+EXT017,CCSR_ICD10CM,External cause codes: suffocation/inhalation; initial encounter
+EXT018,CCSR_ICD10CM,"External cause codes: other specified, classifiable and NEC; initial encounter"
+EXT019,CCSR_ICD10CM,External cause codes: unspecified mechanism
+EXT020,CCSR_ICD10CM,"External cause codes: intent of injury, accidental/unintentional"
+EXT021,CCSR_ICD10CM,"External cause codes: intent of injury, self-harm"
+EXT022,CCSR_ICD10CM,"External cause codes: intent of injury, assault"
+EXT023,CCSR_ICD10CM,"External cause codes: intent of injury, undetermined"
+EXT024,CCSR_ICD10CM,"External cause codes: intent of injury, legal intervention/war"
+EXT025,CCSR_ICD10CM,"External cause codes: complications of medical and surgical care, initial encounter"
+EXT026,CCSR_ICD10CM,External cause codes: activity codes
+EXT027,CCSR_ICD10CM,External cause codes: place of occurrence of the external cause
+EXT028,CCSR_ICD10CM,External cause codes: evidence of alcohol involvement
+EXT029,CCSR_ICD10CM,External cause codes: subsequent encounter
+EXT030,CCSR_ICD10CM,External cause codes: sequela
+EYE001,CCSR_ICD10CM,Cornea and external disease
+EYE002,CCSR_ICD10CM,Cataract and other lens disorders
+EYE003,CCSR_ICD10CM,Glaucoma
+EYE004,CCSR_ICD10CM,Uveitis and ocular inflammation
+EYE005,CCSR_ICD10CM,Retinal and vitreous conditions
+EYE006,CCSR_ICD10CM,Neuro-ophthalmology
+EYE007,CCSR_ICD10CM,Strabismus
+EYE008,CCSR_ICD10CM,Oculofacial plastics and orbital conditions
+EYE009,CCSR_ICD10CM,Refractive error
+EYE010,CCSR_ICD10CM,Blindness and vision defects
+EYE011,CCSR_ICD10CM,Postprocedural or postoperative eye complication
+EYE012,CCSR_ICD10CM,Other specified eye disorders
+FAC001,CCSR_ICD10CM,Encounter for administrative purposes
+FAC002,CCSR_ICD10CM,Encounter for mental health services related to abuse
+FAC003,CCSR_ICD10CM,"Encounter for observation and examination for conditions ruled out (excludes infectious disease, neoplasm, mental disorders)"
+FAC004,CCSR_ICD10CM,Encounter for prophylactic or other procedures
+FAC005,CCSR_ICD10CM,Encounter for prophylactic measures (excludes immunization)
+FAC006,CCSR_ICD10CM,Encounter for antineoplastic therapies
+FAC007,CCSR_ICD10CM,Encounter for mental health conditions
+FAC008,CCSR_ICD10CM,Neoplasm-related encounters
+FAC009,CCSR_ICD10CM,"Implant, device or graft related encounter"
+FAC010,CCSR_ICD10CM,Other aftercare encounter
+FAC011,CCSR_ICD10CM,Counseling related to sexual behavior or orientation
+FAC012,CCSR_ICD10CM,Other specified encounters and counseling
+FAC013,CCSR_ICD10CM,Contraceptive and procreative management
+FAC014,CCSR_ICD10CM,Medical examination/evaluation
+FAC015,CCSR_ICD10CM,Resistance to antimicrobial drugs
+FAC016,CCSR_ICD10CM,"Exposure, encounters, screening or contact with infectious disease"
+FAC017,CCSR_ICD10CM,No immunization or underimmunization
+FAC018,CCSR_ICD10CM,Screening for neurocognitive or neurodevelopmental condition
+FAC019,CCSR_ICD10CM,Socioeconomic/psychosocial factors
+FAC020,CCSR_ICD10CM,Lifestyle/life management factors
+FAC022,CCSR_ICD10CM,Acquired absence of limb or organ
+FAC023,CCSR_ICD10CM,Organ transplant status
+FAC024,CCSR_ICD10CM,Carrier status
+FAC025,CCSR_ICD10CM,Other specified status
+FAC026,CCSR_ICD10CM,Personal history of nicotine dependence
+FAC027,CCSR_ICD10CM,Personal history of malignant neoplasm
+FAC028,CCSR_ICD10CM,Family history of disease
+FAC029,CCSR_ICD10CM,Genetic susceptibility to disease
+FAC030,CCSR_ICD10CM,Personal history of other disease
+GEN001,CCSR_ICD10CM,Nephritis; nephrosis; renal sclerosis
+GEN002,CCSR_ICD10CM,Acute and unspecified renal failure
+GEN003,CCSR_ICD10CM,Chronic kidney disease
+GEN004,CCSR_ICD10CM,Urinary tract infections
+GEN005,CCSR_ICD10CM,Calculus of urinary tract
+GEN006,CCSR_ICD10CM,Other specified and unspecified diseases of kidney and ureters
+GEN007,CCSR_ICD10CM,Other specified and unspecified diseases of bladder and urethra
+GEN008,CCSR_ICD10CM,Urinary incontinence
+GEN009,CCSR_ICD10CM,Hematuria
+GEN010,CCSR_ICD10CM,Proteinuria
+GEN011,CCSR_ICD10CM,Vesicoureteral reflux
+GEN012,CCSR_ICD10CM,Hyperplasia of prostate
+GEN013,CCSR_ICD10CM,Inflammatory conditions of male genital organs
+GEN014,CCSR_ICD10CM,Erectile dysfunction
+GEN015,CCSR_ICD10CM,Male infertility
+GEN016,CCSR_ICD10CM,Other specified male genital disorders
+GEN017,CCSR_ICD10CM,Nonmalignant breast conditions
+GEN018,CCSR_ICD10CM,Inflammatory diseases of female pelvic organs
+GEN019,CCSR_ICD10CM,Endometriosis
+GEN020,CCSR_ICD10CM,Prolapse of female genital organs
+GEN021,CCSR_ICD10CM,Menstrual disorders
+GEN022,CCSR_ICD10CM,Benign ovarian cyst
+GEN023,CCSR_ICD10CM,Menopausal disorders
+GEN024,CCSR_ICD10CM,Female infertility
+GEN025,CCSR_ICD10CM,Other specified female genital disorders
+GEN026,CCSR_ICD10CM,Postprocedural or postoperative genitourinary system complication
+INF001,CCSR_ICD10CM,Tuberculosis
+INF002,CCSR_ICD10CM,Septicemia
+INF003,CCSR_ICD10CM,Bacterial infections
+INF004,CCSR_ICD10CM,Fungal infections
+INF005,CCSR_ICD10CM,Foodborne intoxications
+INF006,CCSR_ICD10CM,HIV infection
+INF007,CCSR_ICD10CM,Hepatitis
+INF008,CCSR_ICD10CM,Viral infection
+INF009,CCSR_ICD10CM,"Parasitic, other specified and unspecified infections"
+INF010,CCSR_ICD10CM,Sexually transmitted infections (excluding HIV and hepatitis)
+INF011,CCSR_ICD10CM,Sequela of specified infectious disease conditions
+INF012,CCSR_ICD10CM,COVID-19
+INJ001,CCSR_ICD10CM,"Fracture of head and neck, initial encounter"
+INJ002,CCSR_ICD10CM,"Fracture of the spine and back, initial encounter"
+INJ003,CCSR_ICD10CM,"Fracture of torso, initial encounter"
+INJ004,CCSR_ICD10CM,"Fracture of the upper limb, initial encounter"
+INJ005,CCSR_ICD10CM,"Fracture of the lower limb (except hip), initial encounter"
+INJ006,CCSR_ICD10CM,"Fracture of the neck of the femur (hip), initial encounter"
+INJ007,CCSR_ICD10CM,"Dislocations, initial encounter"
+INJ008,CCSR_ICD10CM,"Traumatic brain injury (TBI); concussion, initial encounter"
+INJ009,CCSR_ICD10CM,"Spinal cord injury (SCI), initial encounter"
+INJ010,CCSR_ICD10CM,"Internal organ injury, initial encounter"
+INJ011,CCSR_ICD10CM,"Open wounds of head and neck, initial encounter"
+INJ012,CCSR_ICD10CM,"Open wounds to limbs, initial encounter"
+INJ013,CCSR_ICD10CM,"Open wounds of trunk, initial encounter"
+INJ014,CCSR_ICD10CM,"Amputation of a limb, initial encounter"
+INJ015,CCSR_ICD10CM,"Amputation of other body parts, initial encounter"
+INJ016,CCSR_ICD10CM,"Injury to blood vessels, initial encounter"
+INJ017,CCSR_ICD10CM,"Superficial injury; contusion, initial encounter"
+INJ018,CCSR_ICD10CM,"Crushing injury, initial encounter"
+INJ019,CCSR_ICD10CM,"Burn and corrosion, initial encounter"
+INJ020,CCSR_ICD10CM,"Effect of foreign body entering opening, initial encounter"
+INJ021,CCSR_ICD10CM,"Effect of other external causes, initial encounter"
+INJ022,CCSR_ICD10CM,"Poisoning by drugs, initial encounter"
+INJ023,CCSR_ICD10CM,"Toxic effects, initial encounter"
+INJ024,CCSR_ICD10CM,"Sprains and strains, initial encounter"
+INJ025,CCSR_ICD10CM,"Injury to nerves, muscles and tendons, initial encounter"
+INJ026,CCSR_ICD10CM,Other specified injury
+INJ027,CCSR_ICD10CM,Other unspecified injury
+INJ028,CCSR_ICD10CM,"Adverse effects of drugs and medicaments, initial encounter"
+INJ029,CCSR_ICD10CM,"Underdosing of drugs and medicaments, initial encounter"
+INJ030,CCSR_ICD10CM,Drug induced or toxic related condition
+INJ031,CCSR_ICD10CM,Allergic reactions
+INJ032,CCSR_ICD10CM,Maltreatment/abuse
+INJ033,CCSR_ICD10CM,"Complication of cardiovascular device, implant or graft, initial encounter"
+INJ034,CCSR_ICD10CM,"Complication of genitourinary device, implant or graft, initial encounter"
+INJ035,CCSR_ICD10CM,"Complication of internal orthopedic device or implant, initial encounter"
+INJ036,CCSR_ICD10CM,"Complication of transplanted organs or tissue, initial encounter"
+INJ037,CCSR_ICD10CM,"Complication of other surgical or medical care, injury, initial encounter"
+INJ038,CCSR_ICD10CM,"Fracture of head and neck, subsequent encounter"
+INJ039,CCSR_ICD10CM,"Fracture of the spine and back, subsequent encounter"
+INJ040,CCSR_ICD10CM,"Fracture of torso, subsequent encounter"
+INJ041,CCSR_ICD10CM,"Fracture of the upper limb, subsequent encounter"
+INJ042,CCSR_ICD10CM,"Fracture of lower limb (except hip), subsequent encounter"
+INJ043,CCSR_ICD10CM,"Fracture of the neck of the femur (hip), subsequent encounter"
+INJ044,CCSR_ICD10CM,"Dislocations, subsequent encounter"
+INJ045,CCSR_ICD10CM,"Traumatic brain injury (TBI); concussion, subsequent encounter"
+INJ046,CCSR_ICD10CM,"Spinal cord injury (SCI), subsequent encounter"
+INJ047,CCSR_ICD10CM,"Internal organ injury, subsequent encounter"
+INJ048,CCSR_ICD10CM,"Open wounds of head and neck, subsequent encounter"
+INJ049,CCSR_ICD10CM,"Open wounds to limbs, subsequent encounter"
+INJ050,CCSR_ICD10CM,"Open wounds of trunk, subsequent encounter"
+INJ051,CCSR_ICD10CM,"Amputation of a limb, subsequent encounter"
+INJ052,CCSR_ICD10CM,"Amputation of other body parts, subsequent encounter"
+INJ053,CCSR_ICD10CM,"Injury to blood vessels, subsequent encounter"
+INJ054,CCSR_ICD10CM,"Superficial injury; contusion, subsequent encounter"
+INJ055,CCSR_ICD10CM,"Crushing injury, subsequent encounter"
+INJ056,CCSR_ICD10CM,"Burns and corrosion, subsequent encounter"
+INJ057,CCSR_ICD10CM,"Effect of foreign body entering opening, subsequent encounter"
+INJ058,CCSR_ICD10CM,"Effect of other external causes, subsequent encounter"
+INJ059,CCSR_ICD10CM,"Poisoning by drugs, subsequent encounter"
+INJ060,CCSR_ICD10CM,"Toxic effects, subsequent encounter"
+INJ061,CCSR_ICD10CM,"Sprains and strains, subsequent encounter"
+INJ062,CCSR_ICD10CM,"Injury to nerves, muscles and tendons, subsequent encounter"
+INJ063,CCSR_ICD10CM,"Other specified injury, subsequent encounter"
+INJ064,CCSR_ICD10CM,"Other unspecified injuries, subsequent encounter"
+INJ065,CCSR_ICD10CM,"Adverse effects of drugs and medicaments, subsequent encounter"
+INJ066,CCSR_ICD10CM,"Underdosing of drugs and medicaments, subsequent encounter"
+INJ067,CCSR_ICD10CM,"Allergic reactions, subsequent encounter"
+INJ068,CCSR_ICD10CM,"Maltreatment/abuse, subsequent encounter"
+INJ069,CCSR_ICD10CM,"Complication of cardiovascular device, implant or graft, subsequent encounter"
+INJ070,CCSR_ICD10CM,"Complication of genitourinary device, implant or graft, subsequent encounter"
+INJ071,CCSR_ICD10CM,"Complication of internal orthopedic device or implant, subsequent encounter"
+INJ072,CCSR_ICD10CM,"Complication of other surgical or medical care, injury, subsequent encounter"
+INJ073,CCSR_ICD10CM,"Injury, sequela"
+INJ074,CCSR_ICD10CM,"Effect of other external causes, sequela"
+INJ075,CCSR_ICD10CM,"Poisoning/toxic effect/adverse effects/underdosing, sequela"
+INJ076,CCSR_ICD10CM,"Complication, sequela"
+MAL001,CCSR_ICD10CM,Cardiac and circulatory congenital anomalies
+MAL002,CCSR_ICD10CM,Digestive congenital anomalies
+MAL003,CCSR_ICD10CM,Genitourinary congenital anomalies
+MAL004,CCSR_ICD10CM,Nervous system congenital anomalies
+MAL005,CCSR_ICD10CM,"Congenital malformations of eye, ear, face, neck"
+MAL006,CCSR_ICD10CM,Cleft lip or palate
+MAL007,CCSR_ICD10CM,Respiratory congenital malformations
+MAL008,CCSR_ICD10CM,Musculoskeletal congenital conditions
+MAL009,CCSR_ICD10CM,Chromosomal abnormalities
+MAL010,CCSR_ICD10CM,Other specified and unspecified congenital anomalies
+MBD001,CCSR_ICD10CM,Schizophrenia spectrum and other psychotic disorders
+MBD002,CCSR_ICD10CM,Depressive disorders
+MBD003,CCSR_ICD10CM,Bipolar and related disorders
+MBD004,CCSR_ICD10CM,Other specified and unspecified mood disorders
+MBD005,CCSR_ICD10CM,Anxiety and fear-related disorders
+MBD006,CCSR_ICD10CM,Obsessive-compulsive and related disorders
+MBD007,CCSR_ICD10CM,Trauma- and stressor-related disorders
+MBD008,CCSR_ICD10CM,"Disruptive, impulse-control and conduct disorders"
+MBD009,CCSR_ICD10CM,Personality disorders
+MBD010,CCSR_ICD10CM,Feeding and eating disorders
+MBD011,CCSR_ICD10CM,Somatic disorders
+MBD012,CCSR_ICD10CM,Suicidal ideation/attempt/intentional self-harm
+MBD013,CCSR_ICD10CM,Miscellaneous mental and behavioral disorders/conditions
+MBD014,CCSR_ICD10CM,Neurodevelopmental disorders
+MBD017,CCSR_ICD10CM,Alcohol-related disorders
+MBD018,CCSR_ICD10CM,Opioid-related disorders
+MBD019,CCSR_ICD10CM,Cannabis-related disorders
+MBD020,CCSR_ICD10CM,Sedative-related disorders
+MBD021,CCSR_ICD10CM,Stimulant-related disorders
+MBD022,CCSR_ICD10CM,Hallucinogen-related disorders
+MBD023,CCSR_ICD10CM,Inhalant-related disorders
+MBD024,CCSR_ICD10CM,Tobacco-related disorders
+MBD025,CCSR_ICD10CM,Other specified substance-related disorders
+MBD026,CCSR_ICD10CM,Mental and substance use disorders in remission
+MBD027,CCSR_ICD10CM,Suicide attempt/intentional self-harm; subsequent encounter
+MBD028,CCSR_ICD10CM,Opioid-related disorders; subsequent encounter
+MBD029,CCSR_ICD10CM,Stimulant-related disorders; subsequent encounter
+MBD030,CCSR_ICD10CM,Cannabis-related disorders; subsequent encounter
+MBD031,CCSR_ICD10CM,Hallucinogen-related disorders; subsequent encounter
+MBD032,CCSR_ICD10CM,Sedative-related disorders; subsequent encounter
+MBD033,CCSR_ICD10CM,Inhalant-related disorders; subsequent encounter
+MBD034,CCSR_ICD10CM,Mental and substance use disorders; sequela
+MUS001,CCSR_ICD10CM,Infective arthritis
+MUS002,CCSR_ICD10CM,Osteomyelitis
+MUS003,CCSR_ICD10CM,Rheumatoid arthritis and related disease
+MUS004,CCSR_ICD10CM,Juvenile arthritis
+MUS005,CCSR_ICD10CM,Other specified chronic arthropathy
+MUS006,CCSR_ICD10CM,Osteoarthritis
+MUS007,CCSR_ICD10CM,Other specified joint disorders
+MUS008,CCSR_ICD10CM,Immune-mediated/reactive arthropathies
+MUS009,CCSR_ICD10CM,Tendon and synovial disorders
+MUS010,CCSR_ICD10CM,"Musculoskeletal pain, not low back pain"
+MUS011,CCSR_ICD10CM,Spondylopathies/spondyloarthropathy (including infective)
+MUS012,CCSR_ICD10CM,Biomechanical lesions
+MUS013,CCSR_ICD10CM,Osteoporosis
+MUS014,CCSR_ICD10CM,"Pathological fracture, initial encounter"
+MUS015,CCSR_ICD10CM,"Pathological fracture, subsequent encounter"
+MUS016,CCSR_ICD10CM,"Stress fracture, initial encounter"
+MUS017,CCSR_ICD10CM,"Stress fracture, subsequent encounter"
+MUS018,CCSR_ICD10CM,"Atypical fracture, initial encounter"
+MUS019,CCSR_ICD10CM,"Atypical fracture, subsequent encounter"
+MUS020,CCSR_ICD10CM,"Pathological, stress and atypical fractures, sequela"
+MUS021,CCSR_ICD10CM,Acquired foot deformities
+MUS022,CCSR_ICD10CM,Scoliosis and other postural dorsopathic deformities
+MUS023,CCSR_ICD10CM,Acquired deformities (excluding foot)
+MUS024,CCSR_ICD10CM,Systemic lupus erythematosus and connective tissue disorders
+MUS025,CCSR_ICD10CM,Other specified connective tissue disease
+MUS026,CCSR_ICD10CM,Muscle disorders
+MUS027,CCSR_ICD10CM,Musculoskeletal abscess
+MUS028,CCSR_ICD10CM,Other specified bone disease and musculoskeletal deformities
+MUS029,CCSR_ICD10CM,Disorders of jaw
+MUS030,CCSR_ICD10CM,Aseptic necrosis and osteonecrosis
+MUS031,CCSR_ICD10CM,Traumatic arthropathy
+MUS032,CCSR_ICD10CM,Neurogenic/neuropathic arthropathy
+MUS033,CCSR_ICD10CM,Gout
+MUS034,CCSR_ICD10CM,Crystal arthropathies (excluding gout)
+MUS035,CCSR_ICD10CM,Osteomalacia
+MUS036,CCSR_ICD10CM,Autoinflammatory syndromes
+MUS037,CCSR_ICD10CM,Postprocedural or postoperative musculoskeletal system complication
+MUS038,CCSR_ICD10CM,Low back pain
+NEO001,CCSR_ICD10CM,Head and neck cancers - eye
+NEO002,CCSR_ICD10CM,Head and neck cancers - lip and oral cavity
+NEO003,CCSR_ICD10CM,Head and neck cancers - throat
+NEO004,CCSR_ICD10CM,Head and neck cancers - salivary gland
+NEO005,CCSR_ICD10CM,Head and neck cancers - nasopharyngeal
+NEO006,CCSR_ICD10CM,Head and neck cancers - hypopharyngeal
+NEO007,CCSR_ICD10CM,Head and neck cancers - pharyngeal
+NEO008,CCSR_ICD10CM,Head and neck cancers - laryngeal
+NEO009,CCSR_ICD10CM,Head and neck cancers - tonsils
+NEO010,CCSR_ICD10CM,Head and neck cancers - all other types
+NEO011,CCSR_ICD10CM,Cardiac cancers
+NEO012,CCSR_ICD10CM,Gastrointestinal cancers - esophagus
+NEO013,CCSR_ICD10CM,Gastrointestinal cancers - stomach
+NEO014,CCSR_ICD10CM,Gastrointestinal cancers - small intestine
+NEO015,CCSR_ICD10CM,Gastrointestinal cancers - colorectal
+NEO016,CCSR_ICD10CM,Gastrointestinal cancers - anus
+NEO017,CCSR_ICD10CM,Gastrointestinal cancers - liver
+NEO018,CCSR_ICD10CM,Gastrointestinal cancers - bile duct
+NEO019,CCSR_ICD10CM,Gastrointestinal cancers - gallbladder
+NEO020,CCSR_ICD10CM,Gastrointestinal cancers - peritoneum
+NEO021,CCSR_ICD10CM,Gastrointestinal cancers - all other types
+NEO022,CCSR_ICD10CM,Respiratory cancers
+NEO023,CCSR_ICD10CM,Bone cancer
+NEO024,CCSR_ICD10CM,Sarcoma
+NEO025,CCSR_ICD10CM,Skin cancers - melanoma
+NEO026,CCSR_ICD10CM,Skin cancers - basal cell carcinoma
+NEO027,CCSR_ICD10CM,Skin cancers - squamous cell carcinoma
+NEO028,CCSR_ICD10CM,Skin cancers - all other types
+NEO029,CCSR_ICD10CM,Breast cancer - ductal carcinoma in situ (DCIS)
+NEO030,CCSR_ICD10CM,Breast cancer - all other types
+NEO031,CCSR_ICD10CM,Female reproductive system cancers - uterus
+NEO032,CCSR_ICD10CM,Female reproductive system cancers - cervix
+NEO033,CCSR_ICD10CM,Female reproductive system cancers - ovary
+NEO034,CCSR_ICD10CM,Female reproductive system cancers - fallopian tube
+NEO035,CCSR_ICD10CM,Female reproductive system cancers - endometrium
+NEO036,CCSR_ICD10CM,Female reproductive system cancers - vulva
+NEO037,CCSR_ICD10CM,Female reproductive system cancers - vagina
+NEO038,CCSR_ICD10CM,Female reproductive system cancers - all other types
+NEO039,CCSR_ICD10CM,Male reproductive system cancers - prostate
+NEO040,CCSR_ICD10CM,Male reproductive system cancers - testis
+NEO041,CCSR_ICD10CM,Male reproductive system cancers - penis
+NEO042,CCSR_ICD10CM,Male reproductive system cancers - all other types
+NEO043,CCSR_ICD10CM,Urinary system cancers - bladder
+NEO044,CCSR_ICD10CM,Urinary system cancers - ureter and renal pelvis
+NEO045,CCSR_ICD10CM,Urinary system cancers - kidney
+NEO046,CCSR_ICD10CM,Urinary system cancers - urethra
+NEO047,CCSR_ICD10CM,Urinary system cancers - all other types
+NEO048,CCSR_ICD10CM,Nervous system cancers - brain
+NEO049,CCSR_ICD10CM,Nervous system cancers - all other types
+NEO050,CCSR_ICD10CM,Endocrine system cancers - thyroid
+NEO051,CCSR_ICD10CM,Endocrine system cancers - pancreas
+NEO052,CCSR_ICD10CM,Endocrine system cancers - thymus
+NEO053,CCSR_ICD10CM,Endocrine system cancers - adrenocortical
+NEO054,CCSR_ICD10CM,Endocrine system cancers - parathyroid
+NEO055,CCSR_ICD10CM,Endocrine system cancers - pituitary gland
+NEO056,CCSR_ICD10CM,Endocrine system cancers - all other types
+NEO057,CCSR_ICD10CM,Hodgkin lymphoma
+NEO058,CCSR_ICD10CM,Non-Hodgkin lymphoma
+NEO059,CCSR_ICD10CM,Leukemia - acute lymphoblastic leukemia (ALL)
+NEO060,CCSR_ICD10CM,Leukemia - acute myeloid leukemia (AML)
+NEO061,CCSR_ICD10CM,Leukemia - chronic lymphocytic leukemia (CLL)
+NEO062,CCSR_ICD10CM,Leukemia - chronic myeloid leukemia (CML)
+NEO063,CCSR_ICD10CM,Leukemia - hairy cell
+NEO064,CCSR_ICD10CM,Leukemia - all other types
+NEO065,CCSR_ICD10CM,Multiple myeloma
+NEO066,CCSR_ICD10CM,Malignant neuroendocrine tumors
+NEO067,CCSR_ICD10CM,Mesothelioma
+NEO068,CCSR_ICD10CM,Myelodysplastic syndrome (MDS)
+NEO069,CCSR_ICD10CM,Cancer of other sites
+NEO070,CCSR_ICD10CM,Secondary malignancies
+NEO071,CCSR_ICD10CM,"Malignant neoplasm, unspecified"
+NEO072,CCSR_ICD10CM,Neoplasms of unspecified nature or uncertain behavior
+NEO073,CCSR_ICD10CM,Benign neoplasms
+NEO074,CCSR_ICD10CM,Conditions due to neoplasm or the treatment of neoplasm
+NEO075,CCSR_ICD10CM,Leukemia in remission
+NEO076,CCSR_ICD10CM,Hodgkin lymphoma in remission
+NEO077,CCSR_ICD10CM,Non-Hodgkin lymphoma in remission
+NEO078,CCSR_ICD10CM,Myeloma in remission
+NVS001,CCSR_ICD10CM,Meningitis
+NVS002,CCSR_ICD10CM,Encephalitis
+NVS003,CCSR_ICD10CM,Other specified CNS infection and poliomyelitis
+NVS004,CCSR_ICD10CM,Parkinson`s disease
+NVS005,CCSR_ICD10CM,Multiple sclerosis
+NVS006,CCSR_ICD10CM,Other nervous system disorders (often hereditary or degenerative)
+NVS007,CCSR_ICD10CM,Cerebral palsy
+NVS008,CCSR_ICD10CM,Paralysis (other than cerebral palsy)
+NVS009,CCSR_ICD10CM,Epilepsy; convulsions
+NVS010,CCSR_ICD10CM,Headache; including migraine
+NVS011,CCSR_ICD10CM,Neurocognitive disorders
+NVS012,CCSR_ICD10CM,Transient cerebral ischemia
+NVS013,CCSR_ICD10CM,Coma; stupor; and brain damage
+NVS014,CCSR_ICD10CM,CNS abscess
+NVS015,CCSR_ICD10CM,Polyneuropathies
+NVS016,CCSR_ICD10CM,Sleep wake disorders
+NVS017,CCSR_ICD10CM,Nerve and nerve root disorders
+NVS018,CCSR_ICD10CM,Myopathies
+NVS019,CCSR_ICD10CM,Nervous system pain and pain syndromes
+NVS020,CCSR_ICD10CM,Other nervous system disorders (neither hereditary nor degenerative)
+NVS021,CCSR_ICD10CM,Postprocedural or postoperative nervous system complication
+NVS022,CCSR_ICD10CM,Sequela of specified nervous system conditions
+PNL001,CCSR_ICD10CM,Liveborn
+PNL002,CCSR_ICD10CM,Short gestation; low birth weight; and fetal growth retardation
+PNL003,CCSR_ICD10CM,Neonatal acidemia and hypoxia
+PNL004,CCSR_ICD10CM,Neonatal cerebral disorders
+PNL005,CCSR_ICD10CM,Respiratory distress syndrome
+PNL006,CCSR_ICD10CM,Respiratory perinatal condition
+PNL007,CCSR_ICD10CM,Hemolytic jaundice and perinatal jaundice
+PNL008,CCSR_ICD10CM,Birth trauma
+PNL009,CCSR_ICD10CM,Perinatal infections
+PNL010,CCSR_ICD10CM,Newborn affected by maternal conditions or complications of labor/delivery
+PNL011,CCSR_ICD10CM,Hemorrhagic and hematologic disorders of newborn
+PNL012,CCSR_ICD10CM,Neonatal digestive and feeding disorders
+PNL013,CCSR_ICD10CM,Other specified and unspecified perinatal conditions
+PNL014,CCSR_ICD10CM,Neonatal abstinence syndrome
+PNL015,CCSR_ICD10CM,Fetal alcohol syndrome
+PRG001,CCSR_ICD10CM,Antenatal screening
+PRG002,CCSR_ICD10CM,Gestational weeks
+PRG003,CCSR_ICD10CM,Spontaneous abortion and complications of spontaneous abortion
+PRG004,CCSR_ICD10CM,Induced abortion and complications of termination of pregnancy
+PRG005,CCSR_ICD10CM,Ectopic pregnancy and complications of ectopic pregnancy
+PRG006,CCSR_ICD10CM,Molar pregnancy and other abnormal products of conception
+PRG007,CCSR_ICD10CM,Complications following ectopic and/or molar pregnancy
+PRG008,CCSR_ICD10CM,Supervision of high-risk pregnancy
+PRG009,CCSR_ICD10CM,"Early, first or unspecified trimester hemorrhage"
+PRG010,CCSR_ICD10CM,Hemorrhage after first trimester
+PRG011,CCSR_ICD10CM,Early or threatened labor
+PRG012,CCSR_ICD10CM,Multiple gestation
+PRG013,CCSR_ICD10CM,Maternal care related to fetal conditions
+PRG014,CCSR_ICD10CM,Polyhydramnios and other problems of amniotic cavity
+PRG015,CCSR_ICD10CM,Obstetric history affecting care in pregnancy
+PRG016,CCSR_ICD10CM,Previous C-section
+PRG017,CCSR_ICD10CM,Maternal care for abnormality of pelvic organs
+PRG018,CCSR_ICD10CM,Maternal care related to disorders of the placenta and placental implantation
+PRG019,CCSR_ICD10CM,Diabetes or abnormal glucose tolerance complicating pregnancy; childbirth; or the puerperium
+PRG020,CCSR_ICD10CM,Hypertension and hypertensive-related conditions complicating pregnancy; childbirth; and the puerperium
+PRG021,CCSR_ICD10CM,Maternal intrauterine infection
+PRG022,CCSR_ICD10CM,Prolonged pregnancy
+PRG023,CCSR_ICD10CM,Complications specified during childbirth
+PRG024,CCSR_ICD10CM,"Malposition, disproportion or other labor complications"
+PRG025,CCSR_ICD10CM,Anesthesia complications during pregnancy
+PRG026,CCSR_ICD10CM,OB-related trauma to perineum and vulva
+PRG027,CCSR_ICD10CM,Complications specified during the puerperium
+PRG028,CCSR_ICD10CM,Other specified complications in pregnancy
+PRG029,CCSR_ICD10CM,"Uncomplicated pregnancy, delivery or puerperium"
+PRG030,CCSR_ICD10CM,Maternal outcome of delivery
+RSP001,CCSR_ICD10CM,Sinusitis
+RSP002,CCSR_ICD10CM,Pneumonia (except that caused by tuberculosis)
+RSP003,CCSR_ICD10CM,Influenza
+RSP004,CCSR_ICD10CM,Acute and chronic tonsillitis
+RSP005,CCSR_ICD10CM,Acute bronchitis
+RSP006,CCSR_ICD10CM,Other specified upper respiratory infections
+RSP007,CCSR_ICD10CM,Other specified and unspecified upper respiratory disease
+RSP008,CCSR_ICD10CM,Chronic obstructive pulmonary disease and bronchiectasis
+RSP009,CCSR_ICD10CM,Asthma
+RSP010,CCSR_ICD10CM,Aspiration pneumonitis
+RSP011,CCSR_ICD10CM,"Pleurisy, pleural effusion and pulmonary collapse"
+RSP012,CCSR_ICD10CM,Respiratory failure; insufficiency; arrest
+RSP013,CCSR_ICD10CM,Lung disease due to external agents
+RSP014,CCSR_ICD10CM,Pneumothorax
+RSP015,CCSR_ICD10CM,Mediastinal disorders
+RSP016,CCSR_ICD10CM,Other specified and unspecified lower respiratory disease
+RSP017,CCSR_ICD10CM,Postprocedural or postoperative respiratory system complication
+SKN001,CCSR_ICD10CM,Skin and subcutaneous tissue infections
+SKN002,CCSR_ICD10CM,Other specified inflammatory condition of skin
+SKN003,CCSR_ICD10CM,Pressure ulcer of skin
+SKN004,CCSR_ICD10CM,Non-pressure ulcer of skin
+SKN005,CCSR_ICD10CM,Contact dermatitis
+SKN006,CCSR_ICD10CM,Postprocedural or postoperative skin complication
+SKN007,CCSR_ICD10CM,Other specified and unspecified skin disorders
+SYM001,CCSR_ICD10CM,Syncope
+SYM002,CCSR_ICD10CM,Fever
+SYM003,CCSR_ICD10CM,Shock
+SYM004,CCSR_ICD10CM,Nausea and vomiting
+SYM005,CCSR_ICD10CM,Dysphagia
+SYM006,CCSR_ICD10CM,Abdominal pain and other digestive/abdomen signs and symptoms
+SYM007,CCSR_ICD10CM,Malaise and fatigue
+SYM008,CCSR_ICD10CM,Symptoms of mental and substance use conditions
+SYM009,CCSR_ICD10CM,Abnormal findings related to substance use
+SYM010,CCSR_ICD10CM,Nervous system signs and symptoms
+SYM011,CCSR_ICD10CM,Genitourinary signs and symptoms
+SYM012,CCSR_ICD10CM,Circulatory signs and symptoms
+SYM013,CCSR_ICD10CM,Respiratory signs and symptoms
+SYM014,CCSR_ICD10CM,Skin/Subcutaneous signs and symptoms
+SYM015,CCSR_ICD10CM,General sensation/perception signs and symptoms
+SYM016,CCSR_ICD10CM,Other general signs and symptoms
+SYM017,CCSR_ICD10CM,Abnormal findings without diagnosis
+SYM018,CCSR_ICD10CM,Prediabetes
+XXX000,CCSR_ICD10CM,Unacceptable PDX
+XXX111,CCSR_ICD10CM,Unacceptable DX1
