@@ -10,12 +10,12 @@ class CodedConcept(object):
         return self.code + "|" + self.vocabulary
 
     def __repr__(self):
-        return str((self.code, self.vocabulary, self.description))
+        return f"{self.code} - {self.description} ({self.vocabulary})"
 
 
 class CodedConceptSetChange(object):
-
-    def __init__(self, added_codes_list, removed_codes_list, change_type, changed_by=None, change_type_dict=None, derived_from=None, derived_from_version=None):
+    def __init__(self, added_codes_list, removed_codes_list, change_type, changed_by=None, change_type_dict=None,
+                 derived_from=None, derived_from_version=None):
         self.added_codes = added_codes_list
         self.removed_codes = removed_codes_list
 
@@ -69,6 +69,8 @@ class CodedConceptSet(object):
                 self.concept_dict[concept_key] = concept
 
         self.history = CodedConceptSetHistory(self)
+
+        self.created_utc_datetime = datetime.datetime.utcnow()
 
     def __and__(self, other):
         """Intersection of two concept sets"""
@@ -142,6 +144,36 @@ class CodedConceptSet(object):
         local_concepts = [local_concept_dict[c] for c in local_concept_dict]
         return CodedConceptSet(name=version_concept_set_name, concepts=local_concepts)
 
+    def history_summary(self):
+
+        print(f"There are a total of {self.version + 1} versions of the concept set `{self.name}`:")
+
+        local_changes_reversed = list(reversed(self.history.changes))
+
+        for i in range(self.version):
+            historical_version = self.version - i
+            get_historical_version = self.get_version(historical_version)
+            if i == 0:
+                latest_version = " (LATEST)"
+            else:
+                latest_version = ""
+
+            print(f"\tVersion {historical_version} contains {len(get_historical_version)} concepts{latest_version}")
+            change = local_changes_reversed[i]
+            if len(change.added_codes) > 0:
+                print(f"\t\tAdded {len(change.added_codes)} concepts:")
+                for concept in sorted(change.added_codes, key=lambda x: x.code):
+                    print(f"\t\t\t{concept}")
+
+            if len(change.removed_codes) > 0:
+                print(f"\t\tRemoved {len(change.removed_codes)} concepts:")
+                for concept in sorted(change.removed_codes, key=lambda x: x.code):
+                    print(f"\t\t\t{concept}")
+
+        get_historical_version = self.get_version(0)
+        print(f"\tVersion 0 started with {len(get_historical_version)} concepts:")
+        for concept in sorted(get_historical_version, key=lambda x: x.code):
+            print(f"\t\t\t{concept}")
 
 class CompareCodedConceptSets(object):
     """Compares two concept sets and returns a list of differences"""
@@ -158,14 +190,28 @@ class CompareCodedConceptSets(object):
 
     def summary(self):
 
-        print(f"{self.concept_set_1.name}: {len(self.concept_set_1)} concepts")
-        print(f"{self.concept_set_2.name}: {len(self.concept_set_2)} concepts")
 
-        print(f"Intersection: # {len(self.intersection)}")
-        print(f"Union: # {len(self.union)}")
+        print(f"Summarizing differences between concept sets:")
+        print(f'\tConcept set `{self.concept_set_1.name}` contains {len(self.concept_set_1)} concepts')
+        print(f''
+              f'\tConcept set `{self.concept_set_2.name}` contains {len(self.concept_set_2)} concepts')
+        print("")
+        print(f"The intersection between the two concept sets contains {len(self.intersection)} concepts:")
+        for concept in sorted(self.intersection, key=lambda x: x.code):
+            print(f"\t{concept}")
 
-        print(f"Overlap {len(self.intersection)/len(self.union)}")
+        print("")
+        print(f"The union contains {len(self.union)} concepts:")
+        for concept in sorted(self.union, key=lambda x: x.code):
+            print(f"\t{concept}")
+        print("")
+        print(f"The fractional overlap between the two concept sets is: {len(self.intersection)/len(self.union)}")
+        print("")
+        print(f"The left set difference `{self.concept_set_1.name}` contains {len(self.left_difference)} unique concepts:")
+        for concept in sorted(self.left_difference, key=lambda x: x.code):
+            print(f"\t{concept}")
+        print("")
 
-        print(f"Left Difference: {len(self.left_difference)} concepts")
-        print(f"Right Difference: {len(self.right_difference)} concepts")
-
+        print(f'The right set difference `{self.concept_set_2.name}` contains {len(self.right_difference)} unique concepts:')
+        for concept in sorted(self.right_difference, key=lambda x: x.code):
+            print(f"\t{concept}")

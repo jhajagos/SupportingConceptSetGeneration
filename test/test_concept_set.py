@@ -115,6 +115,8 @@ G44.201	Tension-type headache, unspecified, intractable	ICD10CM"""
 
         self.assertEqual(p1_v0, p1_recreated)
 
+        p1.history_summary()
+
     def test_iteration(self):
         p1 = CodedConceptSet("Pain 1", self.concept_list_1)
         i = 0
