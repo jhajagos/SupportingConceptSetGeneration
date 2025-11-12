@@ -174,6 +174,7 @@ class CodedConceptSet(object):
         print(f"\tVersion 0 started with {len(get_historical_version)} concepts:")
         for concept in sorted(get_historical_version, key=lambda x: x.code):
             print(f"\t\t\t{concept}")
+        print("")
 
 class CompareCodedConceptSets(object):
     """Compares two concept sets and returns a list of differences"""
@@ -215,3 +216,4 @@ class CompareCodedConceptSets(object):
         print(f'The right set difference `{self.concept_set_2.name}` contains {len(self.right_difference)} unique concepts:')
         for concept in sorted(self.right_difference, key=lambda x: x.code):
             print(f"\t{concept}")
+        print("")
