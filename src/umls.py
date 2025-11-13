@@ -2,6 +2,13 @@ import time
 import logging
 import requests
 
+import time
+import logging
+import requests
+
+UMLS_BASE_URL = "https://uts-ws.nlm.nih.gov/rest"
+
+
 def process_relationships(relationships):
   """Build a list of relationships from the API response"""
   relationship_list = []
@@ -14,7 +21,8 @@ def process_relationships(relationships):
                           }]
   return relationship_list
 
-def process_hierarchical_term(terms):
+
+def process_hierarchial_term(terms):
   result_list = []
   for term in terms:
     result_list += [{
@@ -24,7 +32,7 @@ def process_hierarchical_term(terms):
   return result_list
 
 
-def umls_request(url, api_key, additional_params={}):
+def umls_request(url, api_key=None, additional_params={}):
   """Make a request to the UMLS API and return the response"""
   start_time = time.time()
 
@@ -40,24 +48,23 @@ def umls_request(url, api_key, additional_params={}):
   return response
 
 
-def get_vocabularies(UMLS_BASE_URL):
-  rl = umls_request(UMLS_BASE_URL + "/metadata/current/sources")
+def get_vocabularies(api_key):
+  rl = umls_request(UMLS_BASE_URL + "/metadata/current/sources", api_key)
   return {r["abbreviation"]: r["expandedForm"] for r in rl['result']}
 
 
-def get_vocabulary_languages(UMLS_BASE_URL):
-  rl = umls_request(UMLS_BASE_URL + "/metadata/current/sources")
+def get_vocabulary_languages(api_key):
+  rl = umls_request(UMLS_BASE_URL + "/metadata/current/sources", api_key)
   return {r["abbreviation"]: r["language"]["expandedForm"] for r in rl['result']}
 
 
-def get_code_source_information( code, source="ICD10CM", version = "current", UMLS_BASE_URL="https://uts-ws.nlm.nih.gov"):
-  """For given terms in a source vocabulary gets context around the term and
+def get_code_source_information(code, api_key, source="ICD10CM", version = "current"):
+  """For a given term in the source vocabulary get the context around the term and
     returns results as a dictionary."""
 
+  languages = get_vocabulary_languages(api_key) # Get language
 
-  languages = get_vocabulary_languages() # Get language
-
-  r_obj = umls_request(UMLS_BASE_URL + f"/content/{version}/source/{source}/{code}")
+  r_obj = umls_request(UMLS_BASE_URL + f"/content/{version}/source/{source}/{code}", api_key)
 
   if "result" not in r_obj:
     return None
@@ -70,7 +77,7 @@ def get_code_source_information( code, source="ICD10CM", version = "current", UM
     if r["attributes"] == "NONE":
       pass
     else:
-      attributes = umls_request(r["attributes"], additional_params={"pageSize": 100}) # TODO: Add paging
+      attributes = umls_request(r["attributes"], api_key, additional_params={"pageSize": 100}) # TODO: Add paging
       if "result" in attributes:
         for attribute in attributes["result"]:
           attributes_dict[attribute["name"]] = attribute["value"]
@@ -79,12 +86,12 @@ def get_code_source_information( code, source="ICD10CM", version = "current", UM
     if r["relations"] == "NONE":
       pass
     else:
-      relationships = umls_request(r["relations"], additional_params={"pageSize": 100})
+      relationships = umls_request(r["relations"], api_key, additional_params={"pageSize": 100})
       if "pageCount" in relationships:
         relationship_list = process_relationships(relationships["result"])
         if relationships["pageCount"] > 1:
           for i in range(2,relationships["pageCount"]+1):
-            i_relationships = umls_request(r["relations"], additional_params={"pageSize": 100, "pageNumber": i})
+            i_relationships = umls_request(r["relations"], api_key, additional_params={"pageSize": 100, "pageNumber": i})
             relationship_list += process_relationships(i_relationships["result"])
 
     # Get CUIs associated with the term (MRCONSO)
@@ -101,11 +108,11 @@ def get_code_source_information( code, source="ICD10CM", version = "current", UM
 
     if parents != "NONE":
       parent_obj = umls_request(parents)
-      parent_list = process_hierarchical_term(parent_obj["result"])
+      parent_list = process_hierarchial_term(parent_obj["result"])
 
     if children != "NONE":
       children_obj = umls_request(children)
-      children_list = process_hierarchical_term(children_obj["result"])
+      children_list = process_hierarchial_term(children_obj["result"])
 
     ancestors_list = []
     descendants_list = []
@@ -115,11 +122,11 @@ def get_code_source_information( code, source="ICD10CM", version = "current", UM
 
     if ancestors != "NONE":
       ancestors_obj = umls_request(ancestors)
-      ancestors_list = process_hierarchical_term(ancestors_obj["result"])
+      ancestors_list = process_hierarchial_term(ancestors_obj["result"])
 
     if descendants != "NONE":
       descendants_obj = umls_request(descendants)
-      descendants_list = process_hierarchical_term(descendants_obj["result"])
+      descendants_list = process_hierarchial_term(descendants_obj["result"])
 
     concept_dict = {}
     if "result" in concepts_obj:
@@ -130,7 +137,7 @@ def get_code_source_information( code, source="ICD10CM", version = "current", UM
 
       # Get defintions (include only English defintions) MRDEF
       for cui in concept_dict:
-        concept_obj = umls_request(concept_dict[cui]["concept_uri"])
+        concept_obj = umls_request(concept_dict[cui]["concept_uri"], api_key)
 
         if "result" in concept_obj:
           cui_concept_obj = concept_obj["result"]
@@ -153,4 +160,4 @@ def get_code_source_information( code, source="ICD10CM", version = "current", UM
   return {"code": code, "name": name, "vocabulary": source, "concepts": concept_dict,
           "attributes": attributes_dict, "relationships": relationship_list,
           "parents": parent_list, "children": children_list,
-          "ancesotors": ancestors_list, "descendants": descendants_list}
+          "ancestors": ancestors_list, "descendants": descendants_list}

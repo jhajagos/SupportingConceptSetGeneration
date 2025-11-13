@@ -1,4 +1,6 @@
 import datetime
+import io
+import csv
 
 class CodedConcept(object):
     def __init__(self, code, vocabulary, description):
@@ -70,7 +72,11 @@ class CodedConceptSet(object):
 
         self.history = CodedConceptSetHistory(self)
 
-        self.created_utc_datetime = datetime.datetime.utcnow()
+        self.created_utc_datetime = datetime.datetime.now(datetime.timezone.utc)
+
+    def __item__(self, key):
+        return self.concept_dict[key]
+
 
     def __and__(self, other):
         """Intersection of two concept sets"""
@@ -176,6 +182,32 @@ class CodedConceptSet(object):
             print(f"\t\t\t{concept}")
         print("")
 
+    def to_csv_string(self, start_i=None, end_i=None):
+
+        output = io.StringIO()
+        writer = csv.writer(output)
+        writer.writerow(["code", "description", "vocabulary"])
+
+        full_concept_list = list(self)
+        if start_i is not None and end_i is not None:
+            concept_list = full_concept_list[start_i:end_i]
+        elif start_i is not None:
+            concept_list = full_concept_list[start_i:]
+        elif end_i is not None:
+            concept_list = full_concept_list[:end_i]
+
+        for concept in concept_list:
+            writer.writerow([concept.code, concept.description, concept.vocabulary])
+        return output.getvalue()
+
+    def to_csv(self, file_path):
+        with open(file_path, "w", newline="") as csv_file:
+            writer = csv.writer(csv_file)
+            writer.writerow(["code", "description", "vocabulary"])
+            for concept in self:
+                writer.writerow([concept.code, concept.description, concept.vocabulary])
+
+
 class CompareCodedConceptSets(object):
     """Compares two concept sets and returns a list of differences"""
 
@@ -190,7 +222,6 @@ class CompareCodedConceptSets(object):
         self.right_difference = self.concept_set_2 - self.concept_set_1
 
     def summary(self):
-
 
         print(f"Summarizing differences between concept sets:")
         print(f'\tConcept set `{self.concept_set_1.name}` contains {len(self.concept_set_1)} concepts')
@@ -217,3 +248,11 @@ class CompareCodedConceptSets(object):
         for concept in sorted(self.right_difference, key=lambda x: x.code):
             print(f"\t{concept}")
         print("")
+
+
+def concepts_df_to_concept_set(df, concept_set_name):
+    concept_list = []
+    for row in df.to_dict("records"):
+        concept_list += [CodedConcept(row["code"], row["vocabulary"], row["description"])]
+
+    return CodedConceptSet(concept_set_name, concept_list)
