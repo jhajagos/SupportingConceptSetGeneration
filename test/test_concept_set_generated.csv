@@ -1,0 +1,106 @@
+code,description,vocabulary
+E10.331,Type 1 diabetes mellitus with moderate nonproliferative diabetic retinopathy with macular edema,ICD10CM
+E10.341,Type 1 diabetes mellitus with severe nonproliferative diabetic retinopathy with macular edema,ICD10CM
+E10.39,Type 1 diabetes mellitus with other diabetic ophthalmic complication,ICD10CM
+E10.329,Type 1 diabetes mellitus with mild nonproliferative diabetic retinopathy without macular edema,ICD10CM
+E10.351,Type 1 diabetes mellitus with proliferative diabetic retinopathy with macular edema,ICD10CM
+E10.359,Type 1 diabetes mellitus with proliferative diabetic retinopathy without macular edema,ICD10CM
+E10.36,Type 1 diabetes mellitus with diabetic cataract,ICD10CM
+E10.3291,"Type 1 diabetes mellitus with mild nonproliferative diabetic retinopathy without macular edema, right eye",ICD10CM
+E10.3213,"Type 1 diabetes mellitus with mild nonproliferative diabetic retinopathy with macular edema, bilateral",ICD10CM
+E10.3292,"Type 1 diabetes mellitus with mild nonproliferative diabetic retinopathy without macular edema, left eye",ICD10CM
+E10.3299,"Type 1 diabetes mellitus with mild nonproliferative diabetic retinopathy without macular edema, unspecified eye",ICD10CM
+E10.3211,"Type 1 diabetes mellitus with mild nonproliferative diabetic retinopathy with macular edema, right eye",ICD10CM
+E10.3293,"Type 1 diabetes mellitus with mild nonproliferative diabetic retinopathy without macular edema, bilateral",ICD10CM
+E10.3219,"Type 1 diabetes mellitus with mild nonproliferative diabetic retinopathy with macular edema, unspecified eye",ICD10CM
+E10.3212,"Type 1 diabetes mellitus with mild nonproliferative diabetic retinopathy with macular edema, left eye",ICD10CM
+E10.3311,"Type 1 diabetes mellitus with moderate nonproliferative diabetic retinopathy with macular edema, right eye",ICD10CM
+E10.3392,"Type 1 diabetes mellitus with moderate nonproliferative diabetic retinopathy without macular edema, left eye",ICD10CM
+E10.3413,"Type 1 diabetes mellitus with severe nonproliferative diabetic retinopathy with macular edema, bilateral",ICD10CM
+E10.3411,"Type 1 diabetes mellitus with severe nonproliferative diabetic retinopathy with macular edema, right eye",ICD10CM
+E10.3312,"Type 1 diabetes mellitus with moderate nonproliferative diabetic retinopathy with macular edema, left eye",ICD10CM
+E10.3313,"Type 1 diabetes mellitus with moderate nonproliferative diabetic retinopathy with macular edema, bilateral",ICD10CM
+E10.3419,"Type 1 diabetes mellitus with severe nonproliferative diabetic retinopathy with macular edema, unspecified eye",ICD10CM
+E10.3319,"Type 1 diabetes mellitus with moderate nonproliferative diabetic retinopathy with macular edema, unspecified eye",ICD10CM
+E10.3412,"Type 1 diabetes mellitus with severe nonproliferative diabetic retinopathy with macular edema, left eye",ICD10CM
+E10.3519,"Type 1 diabetes mellitus with proliferative diabetic retinopathy with macular edema, unspecified eye",ICD10CM
+E10.3523,"Type 1 diabetes mellitus with proliferative diabetic retinopathy with traction retinal detachment involving the macula, bilateral",ICD10CM
+E10.3529,"Type 1 diabetes mellitus with proliferative diabetic retinopathy with traction retinal detachment involving the macula, unspecified eye",ICD10CM
+E10.3531,"Type 1 diabetes mellitus with proliferative diabetic retinopathy with traction retinal detachment not involving the macula, right eye",ICD10CM
+E10.3532,"Type 1 diabetes mellitus with proliferative diabetic retinopathy with traction retinal detachment not involving the macula, left eye",ICD10CM
+E10.3552,"Type 1 diabetes mellitus with stable proliferative diabetic retinopathy, left eye",ICD10CM
+E10.3591,"Type 1 diabetes mellitus with proliferative diabetic retinopathy without macular edema, right eye",ICD10CM
+E10.3521,"Type 1 diabetes mellitus with proliferative diabetic retinopathy with traction retinal detachment involving the macula, right eye",ICD10CM
+E10.3543,"Type 1 diabetes mellitus with proliferative diabetic retinopathy with combined traction retinal detachment and rhegmatogenous retinal detachment, bilateral",ICD10CM
+E10.3553,"Type 1 diabetes mellitus with stable proliferative diabetic retinopathy, bilateral",ICD10CM
+E10.3513,"Type 1 diabetes mellitus with proliferative diabetic retinopathy with macular edema, bilateral",ICD10CM
+E10.3522,"Type 1 diabetes mellitus with proliferative diabetic retinopathy with traction retinal detachment involving the macula, left eye",ICD10CM
+E10.3539,"Type 1 diabetes mellitus with proliferative diabetic retinopathy with traction retinal detachment not involving the macula, unspecified eye",ICD10CM
+E10.3492,"Type 1 diabetes mellitus with severe nonproliferative diabetic retinopathy without macular edema, left eye",ICD10CM
+E10.3541,"Type 1 diabetes mellitus with proliferative diabetic retinopathy with combined traction retinal detachment and rhegmatogenous retinal detachment, right eye",ICD10CM
+E10.3542,"Type 1 diabetes mellitus with proliferative diabetic retinopathy with combined traction retinal detachment and rhegmatogenous retinal detachment, left eye",ICD10CM
+E10.3551,"Type 1 diabetes mellitus with stable proliferative diabetic retinopathy, right eye",ICD10CM
+E10.3499,"Type 1 diabetes mellitus with severe nonproliferative diabetic retinopathy without macular edema, unspecified eye",ICD10CM
+E10.3511,"Type 1 diabetes mellitus with proliferative diabetic retinopathy with macular edema, right eye",ICD10CM
+E10.3491,"Type 1 diabetes mellitus with severe nonproliferative diabetic retinopathy without macular edema, right eye",ICD10CM
+E10.3512,"Type 1 diabetes mellitus with proliferative diabetic retinopathy with macular edema, left eye",ICD10CM
+E10.3533,"Type 1 diabetes mellitus with proliferative diabetic retinopathy with traction retinal detachment not involving the macula, bilateral",ICD10CM
+E10.3549,"Type 1 diabetes mellitus with proliferative diabetic retinopathy with combined traction retinal detachment and rhegmatogenous retinal detachment, unspecified eye",ICD10CM
+E10.3592,"Type 1 diabetes mellitus with proliferative diabetic retinopathy without macular edema, left eye",ICD10CM
+E10.3599,"Type 1 diabetes mellitus with proliferative diabetic retinopathy without macular edema, unspecified eye",ICD10CM
+E10.37X1,"Type 1 diabetes mellitus with diabetic macular edema, resolved following treatment, right eye",ICD10CM
+E10.37X2,"Type 1 diabetes mellitus with diabetic macular edema, resolved following treatment, left eye",ICD10CM
+E10.37X3,"Type 1 diabetes mellitus with diabetic macular edema, resolved following treatment, bilateral",ICD10CM
+E11.351,Type 2 diabetes mellitus with proliferative diabetic retinopathy with macular edema,ICD10CM
+E11.311,Type 2 diabetes mellitus with unspecified diabetic retinopathy with macular edema,ICD10CM
+E11.321,Type 2 diabetes mellitus with mild nonproliferative diabetic retinopathy with macular edema,ICD10CM
+E11.331,Type 2 diabetes mellitus with moderate nonproliferative diabetic retinopathy with macular edema,ICD10CM
+E11.359,Type 2 diabetes mellitus with proliferative diabetic retinopathy without macular edema,ICD10CM
+E11.319,Type 2 diabetes mellitus with unspecified diabetic retinopathy without macular edema,ICD10CM
+E11.39,Type 2 diabetes mellitus with other diabetic ophthalmic complication,ICD10CM
+E11.349,Type 2 diabetes mellitus with severe nonproliferative diabetic retinopathy without macular edema,ICD10CM
+E11.36,Type 2 diabetes mellitus with diabetic cataract,ICD10CM
+E11.3211,"Type 2 diabetes mellitus with mild nonproliferative diabetic retinopathy with macular edema, right eye",ICD10CM
+E11.3219,"Type 2 diabetes mellitus with mild nonproliferative diabetic retinopathy with macular edema, unspecified eye",ICD10CM
+E11.3212,"Type 2 diabetes mellitus with mild nonproliferative diabetic retinopathy with macular edema, left eye",ICD10CM
+E11.3291,"Type 2 diabetes mellitus with mild nonproliferative diabetic retinopathy without macular edema, right eye",ICD10CM
+E11.3213,"Type 2 diabetes mellitus with mild nonproliferative diabetic retinopathy with macular edema, bilateral",ICD10CM
+E11.3292,"Type 2 diabetes mellitus with mild nonproliferative diabetic retinopathy without macular edema, left eye",ICD10CM
+E11.3311,"Type 2 diabetes mellitus with moderate nonproliferative diabetic retinopathy with macular edema, right eye",ICD10CM
+E11.3312,"Type 2 diabetes mellitus with moderate nonproliferative diabetic retinopathy with macular edema, left eye",ICD10CM
+E11.3399,"Type 2 diabetes mellitus with moderate nonproliferative diabetic retinopathy without macular edema, unspecified eye",ICD10CM
+E11.3512,"Type 2 diabetes mellitus with proliferative diabetic retinopathy with macular edema, left eye",ICD10CM
+E11.3521,"Type 2 diabetes mellitus with proliferative diabetic retinopathy with traction retinal detachment involving the macula, right eye",ICD10CM
+E11.3531,"Type 2 diabetes mellitus with proliferative diabetic retinopathy with traction retinal detachment not involving the macula, right eye",ICD10CM
+E11.3533,"Type 2 diabetes mellitus with proliferative diabetic retinopathy with traction retinal detachment not involving the macula, bilateral",ICD10CM
+E11.3313,"Type 2 diabetes mellitus with moderate nonproliferative diabetic retinopathy with macular edema, bilateral",ICD10CM
+E11.3412,"Type 2 diabetes mellitus with severe nonproliferative diabetic retinopathy with macular edema, left eye",ICD10CM
+E11.3519,"Type 2 diabetes mellitus with proliferative diabetic retinopathy with macular edema, unspecified eye",ICD10CM
+E11.3523,"Type 2 diabetes mellitus with proliferative diabetic retinopathy with traction retinal detachment involving the macula, bilateral",ICD10CM
+E11.3319,"Type 2 diabetes mellitus with moderate nonproliferative diabetic retinopathy with macular edema, unspecified eye",ICD10CM
+E11.3413,"Type 2 diabetes mellitus with severe nonproliferative diabetic retinopathy with macular edema, bilateral",ICD10CM
+E11.3513,"Type 2 diabetes mellitus with proliferative diabetic retinopathy with macular edema, bilateral",ICD10CM
+E11.3529,"Type 2 diabetes mellitus with proliferative diabetic retinopathy with traction retinal detachment involving the macula, unspecified eye",ICD10CM
+E11.3532,"Type 2 diabetes mellitus with proliferative diabetic retinopathy with traction retinal detachment not involving the macula, left eye",ICD10CM
+E11.3493,"Type 2 diabetes mellitus with severe nonproliferative diabetic retinopathy without macular edema, bilateral",ICD10CM
+E11.3499,"Type 2 diabetes mellitus with severe nonproliferative diabetic retinopathy without macular edema, unspecified eye",ICD10CM
+E11.3419,"Type 2 diabetes mellitus with severe nonproliferative diabetic retinopathy with macular edema, unspecified eye",ICD10CM
+E11.3511,"Type 2 diabetes mellitus with proliferative diabetic retinopathy with macular edema, right eye",ICD10CM
+E11.3522,"Type 2 diabetes mellitus with proliferative diabetic retinopathy with traction retinal detachment involving the macula, left eye",ICD10CM
+E11.3411,"Type 2 diabetes mellitus with severe nonproliferative diabetic retinopathy with macular edema, right eye",ICD10CM
+E11.3492,"Type 2 diabetes mellitus with severe nonproliferative diabetic retinopathy without macular edema, left eye",ICD10CM
+E11.3553,"Type 2 diabetes mellitus with stable proliferative diabetic retinopathy, bilateral",ICD10CM
+E11.3543,"Type 2 diabetes mellitus with proliferative diabetic retinopathy with combined traction retinal detachment and rhegmatogenous retinal detachment, bilateral",ICD10CM
+E11.3593,"Type 2 diabetes mellitus with proliferative diabetic retinopathy without macular edema, bilateral",ICD10CM
+E11.3541,"Type 2 diabetes mellitus with proliferative diabetic retinopathy with combined traction retinal detachment and rhegmatogenous retinal detachment, right eye",ICD10CM
+E11.3551,"Type 2 diabetes mellitus with stable proliferative diabetic retinopathy, right eye",ICD10CM
+E11.3591,"Type 2 diabetes mellitus with proliferative diabetic retinopathy without macular edema, right eye",ICD10CM
+E11.37X3,"Type 2 diabetes mellitus with diabetic macular edema, resolved following treatment, bilateral",ICD10CM
+E11.37X2,"Type 2 diabetes mellitus with diabetic macular edema, resolved following treatment, left eye",ICD10CM
+E11.37X9,"Type 2 diabetes mellitus with diabetic macular edema, resolved following treatment, unspecified eye",ICD10CM
+E11.3539,"Type 2 diabetes mellitus with proliferative diabetic retinopathy with traction retinal detachment not involving the macula, unspecified eye",ICD10CM
+E11.3592,"Type 2 diabetes mellitus with proliferative diabetic retinopathy without macular edema, left eye",ICD10CM
+E11.3599,"Type 2 diabetes mellitus with proliferative diabetic retinopathy without macular edema, unspecified eye",ICD10CM
+E11.37X1,"Type 2 diabetes mellitus with diabetic macular edema, resolved following treatment, right eye",ICD10CM
+E11.3542,"Type 2 diabetes mellitus with proliferative diabetic retinopathy with combined traction retinal detachment and rhegmatogenous retinal detachment, left eye",ICD10CM
+E11.3549,"Type 2 diabetes mellitus with proliferative diabetic retinopathy with combined traction retinal detachment and rhegmatogenous retinal detachment, unspecified eye",ICD10CM

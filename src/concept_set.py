@@ -77,6 +77,17 @@ class CodedConceptSet(object):
     def __item__(self, key):
         return self.concept_dict[key]
 
+    def __repr__(self):
+        return f"{self.name} ({len(self)} concepts)"
+
+
+    def summary(self):
+
+        print(f"Concept set `{self.name}` contains {len(self)} concepts:")
+        for concept in sorted(self, key=lambda x: x.code):
+            print(f"\t{concept}")
+        print("")
+
 
     def __and__(self, other):
         """Intersection of two concept sets"""

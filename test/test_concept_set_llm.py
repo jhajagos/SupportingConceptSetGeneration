@@ -64,9 +64,11 @@ class TestLLM(unittest.TestCase):
 
         cs.CompareCodedConceptSets(filter_obj.retrieved_codes, filter_obj.final_concept_set).summary()
 
-        filter_obj.filter_codes_again("Filter codes to exclude those that are cluster headaches")
+        filter_obj.filter_codes_again("Filter codes to only include those that include cluster headaches")
 
         filter_obj.final_concept_set.history_summary()
+
+        filter_obj.final_concept_set.summary()
 
         filter_obj.final_concept_set.to_csv("./test_vs_concept_set_generated.csv")
 
