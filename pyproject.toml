@@ -1,0 +1,20 @@
+[project]
+name = "concept_set_extraction"
+description = "Tools for working with Concept sets"
+version = "0.1.1"
+authors = [{name = "Janos Hajagos", email = "janos.hajagos@stonybrook.edu"}]
+
+dependencies = ["langchain", "langchain_chroma", "langchain_ollama", "sentence_transformers", "langchain_huggingface", "pandas"]
+requires-python = ">=3.11"
+
+[project.optional-dependencies]
+dev = [
+
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

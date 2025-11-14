@@ -17,7 +17,7 @@ class TestLLM(unittest.TestCase):
 
         llm_obj = csl.LLMCreateWrapper("ollama", "ollama_small_model", self.config, 0.1)
 
-        r = llm_obj.invoke("I am an assistant to help filter diagnosis codes")
+        r = llm_obj.invoke("I am an assistant which filters diagnosis codes")
 
         self.assertIsNotNone(r)  # add assertion here
 
@@ -25,7 +25,7 @@ class TestLLM(unittest.TestCase):
     def test_ccsr_filter(self):
 
         llm_big = csl.LLMCreateWrapper("ollama", "ollama_medium_model", self.config, 0.1)
-        ccsr_obj = csl.CCSRWithFiltering(llm_big, "Find CCSR codes for Type 1 diabetes and Type 2 diabetes", "Filter the code list to include codes that are related to impairments of vision",  50)
+        ccsr_obj = csl.CCSRWithFiltering(llm_big, "Find CCSR codes for Type 1 diabetes and Type 2 diabetes", "Filter the code list to include codes that are related to impairments of vision",  self.config, 50)
 
         ccsr_obj.select_high_level_codes()
 
@@ -42,14 +42,22 @@ class TestLLM(unittest.TestCase):
 
         ccsr_obj.final_concept_set.history_summary()
 
-        ccsr_obj.final_concept_set.to_csv("./test_concept_set_generated.csv")
+        ccsr_obj.final_concept_set.to_csv("./output/ccsr_test_concept_set_generated.csv")
+
+        with open("./output/ccsr_test_concept_set_generated.json", "w") as f:
+            f.write(ccsr_obj.final_concept_set.to_json())
+
 
     def test_build_vector_store(self):
 
         document_list = concept_set_llm.generate_icd10_code_list_to_load()
         hf_sentence_embedder = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
-        #TODO: If databse already exists don't run the import
-        #vectordb_obj = Chroma.from_documents(document_list, hf_sentence_embedder,  persist_directory=self.config["chroma_persist_directory"])
+
+        import glob
+        if glob.glob(self.config["chroma_persist_directory"]+"/*"):
+            pass
+        else:
+            vectordb_obj = Chroma.from_documents(document_list, hf_sentence_embedder,  persist_directory=self.config["chroma_persist_directory"])
 
 
     def test_vector_search(self):
@@ -70,7 +78,10 @@ class TestLLM(unittest.TestCase):
 
         filter_obj.final_concept_set.summary()
 
-        filter_obj.final_concept_set.to_csv("./test_vs_concept_set_generated.csv")
+        filter_obj.final_concept_set.to_csv("./output/vector_search_test_concept_set_generated.csv")
+
+        with open("./output/vector_search_test_concept_set_generated.json", "w") as f:
+            f.write(filter_obj.final_concept_set.to_json())
 
 
 

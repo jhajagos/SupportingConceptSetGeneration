@@ -1,5 +1,8 @@
 import unittest
+
+import concept_set
 from concept_set import CodedConcept, CodedConceptSet, CodedConceptSetChange, CompareCodedConceptSets
+import json
 
 def helper_concept_list(concept_set_string):
     concept_list = []
@@ -83,7 +86,7 @@ G44.201	Tension-type headache, unspecified, intractable	ICD10CM"""
         dx2 = pl3[1].key()
 
         change_description_1 = {dx1: "Missed codes", dx2: "Missed codes"}
-        change_obj_1 = CodedConceptSetChange(added_codes_list=pl3, removed_codes_list=[], change_type="addition", change_type_dict=change_description_1)
+        change_obj_1 = CodedConceptSetChange(added_codes_list=pl3, removed_codes_list=[], change_name="Pain 1 with added codes", change_type="addition", change_type_dict=change_description_1)
 
         self.assertIsNotNone(change_obj_1)
 
@@ -97,7 +100,8 @@ G44.201	Tension-type headache, unspecified, intractable	ICD10CM"""
         dx5 = pl4[1].key()
 
         change_description_2 = {dx4: "Codes are incorrect", dx5: "Codes are incorrect"}
-        change_obj_2 = CodedConceptSetChange(added_codes_list=[], removed_codes_list=pl4, change_type="removal",
+        change_obj_2 = CodedConceptSetChange(added_codes_list=[], removed_codes_list=pl4, change_name="Pain 1 with codes added and removed",
+                                             change_type="removal",
                                              change_type_dict=change_description_2)
 
         p1.register_change(change_obj_2)
@@ -116,6 +120,25 @@ G44.201	Tension-type headache, unspecified, intractable	ICD10CM"""
         self.assertEqual(p1_v0, p1_recreated)
 
         p1.history_summary()
+
+        cs_struct = p1.to_struct()
+
+        self.assertIsNotNone(cs_struct)
+
+        p1_json_dump = p1.to_json()
+
+        with open("./output/p1.json", "w") as f:
+            f.write(p1_json_dump)
+
+        p1_recreated_struct = json.loads(p1_json_dump)
+
+        self.assertIsNotNone(p1_recreated_struct)
+
+        p1_with_versions_recreated = concept_set.recreate_concept_set_from_struct(p1_recreated_struct)
+
+        p1_with_versions_recreated.summary()
+        p1_with_versions_recreated.history_summary()
+
 
     def test_iteration(self):
         p1 = CodedConceptSet("Pain 1", self.concept_list_1)

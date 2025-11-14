@@ -1,6 +1,14 @@
-import datetime
 import io
 import csv
+import json
+import datetime
+
+
+def json_datetime_serializer(obj):
+    if isinstance(obj, datetime.datetime):
+        return obj.isoformat()
+    raise TypeError(f"Object of type {obj.__class__.__name__} is not JSON serializable")
+
 
 class CodedConcept(object):
     def __init__(self, code, vocabulary, description):
@@ -14,16 +22,19 @@ class CodedConcept(object):
     def __repr__(self):
         return f"{self.code} - {self.description} ({self.vocabulary})"
 
+    def to_struct(self):
+        return {"code": self.code, "description": self.description, "vocabulary": self.vocabulary}
+
 
 class CodedConceptSetChange(object):
-    def __init__(self, added_codes_list, removed_codes_list, change_type, changed_by=None, change_type_dict=None,
-                 derived_from=None, derived_from_version=None):
+    def __init__(self, added_codes_list, removed_codes_list, change_name, change_type,  changed_by=None, change_type_dict=None):
         self.added_codes = added_codes_list
         self.removed_codes = removed_codes_list
 
+        self.name = change_name
+        self.previous_name = None
+
         self.change_type = change_type
-        self.derived_from = derived_from
-        self.derived_from_version = derived_from_version
 
         self.registration_utc_datetime = None
         self.changed_by = changed_by
@@ -34,6 +45,19 @@ class CodedConceptSetChange(object):
 
     def __repr__(self):
         return str((self.added_codes, self.removed_codes, self.change_type, self.registration_utc_datetime))
+
+    def to_struct(self):
+        change_struct = {
+            "added_code_list": [x.to_struct() for x in self.added_codes],
+            "removed_code_list": [x.to_struct() for x in self.removed_codes],
+            "name": self.name,
+            "previous_name": self.previous_name,
+            "change_type": self.change_type,
+            "registration_utc_datetime": self.registration_utc_datetime,
+            "changed_by": self.changed_by,
+            "change_type_dict": self.change_type_dict
+        }
+        return change_struct
 
 
 class CodedConceptSetHistory(object):
@@ -73,6 +97,29 @@ class CodedConceptSet(object):
         self.history = CodedConceptSetHistory(self)
 
         self.created_utc_datetime = datetime.datetime.now(datetime.timezone.utc)
+
+
+    def to_struct(self):
+        cs_struct = {"name": self.name,
+                     "version": self.version,
+                     "concept_list": [x.to_struct() for x in self],
+                     "created_utc_datetime": self.created_utc_datetime,
+                     "history": []
+                     }
+
+        for change in self.history.changes:
+            cs_struct["history"] += [change.to_struct()]
+
+        return cs_struct
+
+
+    def to_json(self):
+
+        cs_struct = self.to_struct()
+
+        return json.dumps(cs_struct, default=json_datetime_serializer)
+
+
 
     def __item__(self, key):
         return self.concept_dict[key]
@@ -142,6 +189,10 @@ class CodedConceptSet(object):
             for code in change.removed_codes:
                 self.concept_dict.pop(code.key())
 
+        if change.name is not None:
+            change.previous_name = self.name
+            self.name = change.name
+
     def get_version(self, version):
         """Takes the current version and back steps to older versions. New version loses past history"""
 
@@ -177,6 +228,10 @@ class CodedConceptSet(object):
 
             print(f"\tVersion {historical_version} contains {len(get_historical_version)} concepts{latest_version}")
             change = local_changes_reversed[i]
+
+            if change.name is not None:
+                print(f"\t\tName changed:\n\t\t\tFrom `{change.previous_name}` to `{change.name}`")
+
             if len(change.added_codes) > 0:
                 print(f"\t\tAdded {len(change.added_codes)} concepts:")
                 for concept in sorted(change.added_codes, key=lambda x: x.code):
@@ -217,6 +272,7 @@ class CodedConceptSet(object):
             writer.writerow(["code", "description", "vocabulary"])
             for concept in self:
                 writer.writerow([concept.code, concept.description, concept.vocabulary])
+
 
 
 class CompareCodedConceptSets(object):
@@ -267,3 +323,37 @@ def concepts_df_to_concept_set(df, concept_set_name):
         concept_list += [CodedConcept(row["code"], row["vocabulary"], row["description"])]
 
     return CodedConceptSet(concept_set_name, concept_list)
+
+
+def concept_dict_to_concept(concept_dict):
+    return CodedConcept(concept_dict["code"], concept_dict["vocabulary"], concept_dict["description"])
+
+
+def recreate_concept_set_from_struct(concept_set_struct):
+    concept_set_name = concept_set_struct["name"]
+    concept_list = []
+    for concept_struct in concept_set_struct["concept_list"]:
+        concept_list += [concept_dict_to_concept(concept_struct)]
+
+    created_utc_datetime = datetime.datetime.fromisoformat(concept_set_struct["created_utc_datetime"])
+    concept_set = CodedConceptSet(concept_set_name, concept_list, version=concept_set_struct["version"])
+    concept_set.created_utc_datetime = created_utc_datetime
+
+    history_changes = []
+    for change_struct in concept_set_struct["history"]:
+        changes = CodedConceptSetChange(
+
+                                       [concept_dict_to_concept(x) for x in change_struct["added_code_list"]],
+                                       [concept_dict_to_concept(x) for x in change_struct["removed_code_list"]],
+                                       change_struct["name"],
+                                       change_struct["change_type"],
+                                       change_struct["changed_by"],
+                                       change_struct["change_type_dict"])
+
+        changes.previous_name = change_struct["previous_name"]
+        changes.registration_utc_datetime = datetime.datetime.fromisoformat(change_struct["registration_utc_datetime"])
+        history_changes += [changes]
+
+    concept_set.history.changes = history_changes
+
+    return concept_set

@@ -50,7 +50,6 @@ class LLMCreateWrapper(object):
         return self.llm
 
 
-
 class CodeSelectionAndFiltering(object):
     def __init__(self, llm, selection_prompt, filter_prompt, config_dict,  chunk_size=15, default_high_level_vocabulary=None, default_low_level_vocabulary=None):
         self.llm = llm
@@ -157,7 +156,7 @@ class CCSRWithFiltering(CodeSelectionAndFiltering):
             self.final_concept_set = CodedConceptSet("combined_codes", [])
 
             for key in self.filtered_lower_level_codes:
-                self.final_concept_set.register_change(CodedConceptSetChange(list(self.filtered_lower_level_codes[key]), [], change_type=key))
+                self.final_concept_set.register_change(CodedConceptSetChange(list(self.filtered_lower_level_codes[key]), [], None, change_type=key))
 
         else:
             raise Exception("Lower level codes not filtered yet")
@@ -208,7 +207,7 @@ class VectorSearchWithFilter(object):
             updated_concept_set = CodedConceptSet(f"filter_prompt='{additional_filter_prompt}", filtered_code_list)
 
             cs_obj = concept_set.CompareCodedConceptSets(self.final_concept_set, updated_concept_set)
-            self.final_concept_set.register_change(CodedConceptSetChange([], cs_obj.left_difference, updated_concept_set.name))
+            self.final_concept_set.register_change(CodedConceptSetChange([], cs_obj.left_difference, updated_concept_set.name, "remove"))
 
 
 
