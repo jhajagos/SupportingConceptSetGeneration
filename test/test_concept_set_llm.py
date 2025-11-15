@@ -1,9 +1,9 @@
 import unittest
 import json
 
-import concept_set_llm
-import concept_set_llm as csl
-import concept_set as cs
+
+import concept_set.llm as csl
+import concept_set.base as cs
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 
@@ -60,7 +60,7 @@ class TestLLM(unittest.TestCase):
 
     def test_build_vector_store(self):
 
-        document_list = concept_set_llm.generate_icd10_code_list_to_load()
+        document_list = csl.generate_icd10_code_list_to_load()
         hf_sentence_embedder = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
 
         import glob
@@ -77,10 +77,9 @@ class TestLLM(unittest.TestCase):
         hf_sentence_embedder = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
         vectordb_obj = Chroma(persist_directory=self.config["chroma_persist_directory"], embedding_function=hf_sentence_embedder)
 
-        filter_obj = concept_set_llm.VectorSearchWithFilter(llm_big, vectordb_obj, "severe headaches or migraines",
+        filter_obj = csl.VectorSearchWithFilter(llm_big, vectordb_obj, "severe headaches or migraines",
                                                             "Filter codes to include those that describe headaches or migraines",
                                                             500)
-
         filter_obj.search_vector_db()
         filter_obj.filter_codes()
 

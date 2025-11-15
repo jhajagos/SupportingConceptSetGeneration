@@ -10,7 +10,7 @@ import os
 
 import concept_set
 from umls import get_code_source_information
-from concept_set import CodedConceptSet, CodedConcept, CodedConceptSetChange
+from concept_set.base import CodedConceptSet, CodedConcept, CodedConceptSetChange
 
 class Code(BaseModel):
     code: str = Field(description="code identifier")

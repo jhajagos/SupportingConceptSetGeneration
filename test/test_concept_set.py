@@ -1,7 +1,7 @@
 import unittest
 
 import concept_set
-from concept_set import CodedConcept, CodedConceptSet, CodedConceptSetChange, CompareCodedConceptSets
+from concept_set.base import CodedConcept, CodedConceptSet, CodedConceptSetChange, CompareCodedConceptSets
 import json
 
 def helper_concept_list(concept_set_string):
@@ -134,7 +134,7 @@ G44.201	Tension-type headache, unspecified, intractable	ICD10CM"""
 
         self.assertIsNotNone(p1_recreated_struct)
 
-        p1_with_versions_recreated = concept_set.recreate_concept_set_from_struct(p1_recreated_struct)
+        p1_with_versions_recreated = concept_set.base.recreate_concept_set_from_struct(p1_recreated_struct)
 
         p1_with_versions_recreated.summary()
         p1_with_versions_recreated.history_summary()
