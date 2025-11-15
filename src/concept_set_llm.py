@@ -3,8 +3,10 @@ from typing import List, Optional
 import pandas as pd
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_ollama import ChatOllama
+from langchain_openai import AzureChatOpenAI
 from langchain_core.documents import Document
 import json
+import os
 
 import concept_set
 from umls import get_code_source_information
@@ -42,6 +44,19 @@ class LLMCreateWrapper(object):
                 base_url=llm_config["ollama_server_url"],  # default Ollama URL
                 temperature=temperature
             )
+        elif llm_type == "azure_openai":
+
+            os.environ["AZURE_OPENAI_ENDPOINT"] = llm_config["azure_openai_endpoint"]
+            os.environ["AZURE_OPENAI_API_KEY"] = llm_config["azure_openai_api_key"]
+
+            self.llm = AzureChatOpenAI(
+    azure_deployment=llm_config["azure_openai_deployment_name"],  # or your deployment
+    api_version=llm_config["azure_openai_version"],  # or your api version
+    temperature=temperature,
+    max_tokens=None,
+    timeout=None,
+    max_retries=2,
+)
 
     def invoke(self, prompt):
         return self.llm.invoke(prompt)

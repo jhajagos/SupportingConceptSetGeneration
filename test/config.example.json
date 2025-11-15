@@ -1,0 +1,9 @@
+{
+  "ollama_server_url": "http://localhost:11434",
+  "ollama_small_model": "",
+  "ollama_medium_model": "",
+  "ollama_large_model": "",
+  "ccsr_path": "",
+  "umls_api_key": "",
+  "chroma_persist_directory": "./chroma/"
+}

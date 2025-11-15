@@ -4,7 +4,9 @@ description = "Tools for working with Concept sets"
 version = "0.1.1"
 authors = [{name = "Janos Hajagos", email = "janos.hajagos@stonybrook.edu"}]
 
-dependencies = ["langchain", "langchain_chroma", "langchain_ollama", "sentence_transformers", "langchain_huggingface", "pandas"]
+dependencies = ["langchain", "langchain_chroma", "langchain_ollama", "sentence_transformers", "langchain_huggingface",
+    "langchain-openai", "pandas", "pydantic"]
+
 requires-python = ">=3.11"
 
 [project.optional-dependencies]

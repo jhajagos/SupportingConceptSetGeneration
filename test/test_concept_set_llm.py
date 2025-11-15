@@ -13,7 +13,7 @@ class TestLLM(unittest.TestCase):
         with open("./config.json") as f:
             self.config = json.load(f)
 
-    def test_connect_llm(self):
+    def test_connect_ollama_llm(self):
 
         llm_obj = csl.LLMCreateWrapper("ollama", "ollama_small_model", self.config, 0.1)
 
@@ -22,11 +22,21 @@ class TestLLM(unittest.TestCase):
         self.assertIsNotNone(r)  # add assertion here
 
 
+    def test_connect_azure_openai_llm(self):
+
+        llm_obj = csl.LLMCreateWrapper("azure_openai", None, self.config, 0.1)
+        r = llm_obj.invoke("I am an assistant which filters diagnosis codes")
+
+
     def test_ccsr_filter(self):
 
-        llm_big = csl.LLMCreateWrapper("ollama", "ollama_medium_model", self.config, 0.1)
-        ccsr_obj = csl.CCSRWithFiltering(llm_big, "Find CCSR codes for Type 1 diabetes and Type 2 diabetes", "Filter the code list to include codes that are related to impairments of vision",  self.config, 50)
+        # llm_big = csl.LLMCreateWrapper("ollama", "ollama_medium_model", self.config, 0.1)
 
+        llm_big = csl.LLMCreateWrapper("azure_openai", None, self.config, 0.1)
+        #ccsr_obj = csl.CCSRWithFiltering(llm_big, "Find CCSR codes for Type 1 diabetes and Type 2 diabetes", "Filter the code list to include codes that are related to impairments of vision",  self.config, 50)
+        ccsr_obj = csl.CCSRWithFiltering(llm_big, "Find CCSR codes for breast cancer",
+                                         "Only include codes related to metastatic breast cancer and exlcude codes related to screening",
+                                         self.config, 50)
         ccsr_obj.select_high_level_codes()
 
         cs.CompareCodedConceptSets(ccsr_obj.initial_high_level_codes, ccsr_obj.selected_high_level_codes).summary()
@@ -61,11 +71,15 @@ class TestLLM(unittest.TestCase):
 
 
     def test_vector_search(self):
-        llm_big = csl.LLMCreateWrapper("ollama", "ollama_medium_model", self.config, 0.1)
+        #llm_big = csl.LLMCreateWrapper("ollama", "ollama_medium_model", self.config, 0.1)
+
+        llm_big = csl.LLMCreateWrapper("azure_openai", None, self.config, 0.1)
         hf_sentence_embedder = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
         vectordb_obj = Chroma(persist_directory=self.config["chroma_persist_directory"], embedding_function=hf_sentence_embedder)
 
-        filter_obj = concept_set_llm.VectorSearchWithFilter(llm_big, vectordb_obj, "severe headaches or migraines", "Filter codes to include those that describe headaches or migraines",  100)
+        filter_obj = concept_set_llm.VectorSearchWithFilter(llm_big, vectordb_obj, "severe headaches or migraines",
+                                                            "Filter codes to include those that describe headaches or migraines",
+                                                            500)
 
         filter_obj.search_vector_db()
         filter_obj.filter_codes()
