@@ -146,7 +146,7 @@ class CCSRWithFiltering(CodeSelectionAndFiltering):
                 ccsr_code = code.code
                 concepts_df_to_concept_set = get_df_icd10_codes_from_ccsr(ccsr_code, self.config_dict["umls_api_key"])
 
-                cs_ccsr = concept_set.concepts_df_to_concept_set(concepts_df_to_concept_set, f"CCSR_ICD10CM_{ccsr_code}")
+                cs_ccsr = concept_set.base.concepts_df_to_concept_set(concepts_df_to_concept_set, f"CCSR_ICD10CM_{ccsr_code}")
                 self.retrieved_lower_level_codes[ccsr_code] = cs_ccsr
 
             self.status = 2
