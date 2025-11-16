@@ -1,7 +1,5 @@
-import unittest
 import json
-
-
+import unittest
 import concept_set.llm as csl
 import concept_set.base as cs
 from langchain_chroma import Chroma

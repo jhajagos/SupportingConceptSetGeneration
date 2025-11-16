@@ -9,7 +9,7 @@ import json
 import os
 
 import concept_set
-from umls import get_code_source_information
+from concept_set.umls import get_code_source_information
 from concept_set.base import CodedConceptSet, CodedConcept, CodedConceptSetChange
 
 class Code(BaseModel):
@@ -221,7 +221,7 @@ class VectorSearchWithFilter(object):
 
             updated_concept_set = CodedConceptSet(f"filter_prompt='{additional_filter_prompt}", filtered_code_list)
 
-            cs_obj = concept_set.CompareCodedConceptSets(self.final_concept_set, updated_concept_set)
+            cs_obj = concept_set.base.CompareCodedConceptSets(self.final_concept_set, updated_concept_set)
             self.final_concept_set.register_change(CodedConceptSetChange([], cs_obj.left_difference, updated_concept_set.name, "remove"))
 
 
