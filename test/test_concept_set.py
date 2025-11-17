@@ -1,8 +1,10 @@
 import unittest
 
 import concept_set
-from concept_set.base import CodedConcept, CodedConceptSet, CodedConceptSetChange, CompareCodedConceptSets
+from concept_set.base import (CodedConcept, CodedConceptSet, CodedConceptSetChange, CompareCodedConceptSets,
+                              CodedConceptTuple, CodedConceptMap, CodedConceptMappings, build_icd10cm_snomed_code_mapper)
 import json
+import pandas as pd
 
 def helper_concept_list(concept_set_string):
     concept_list = []
@@ -157,6 +159,21 @@ G44.201	Tension-type headache, unspecified, intractable	ICD10CM"""
 
         self.assertTrue(True)
 
+    def test_concept_map(self):
+        concept_set_1 = CodedConceptSet("Pain 1", self.concept_list_1)
+
+    def test_concept_map_creation(self):
+        concept_set_1 = CodedConceptSet("Pain 1", self.concept_list_1)
+
+        concept_struct_map = []
+        with open("./icd10cm_snomed_ohdsi_map.jsonl") as f:
+            for line in f:
+                concept_struct_map += [json.loads(line)]
+
+        self.assertTrue(len(concept_struct_map) > 0)
+
+        concept_mapper_obj = build_icd10cm_snomed_code_mapper(concept_struct_map)
+        self.assertIsNotNone(concept_mapper_obj)
 
 if __name__ == '__main__':
     unittest.main()

@@ -10,11 +10,55 @@ def json_datetime_serializer(obj):
     raise TypeError(f"Object of type {obj.__class__.__name__} is not JSON serializable")
 
 
+
+class CodedConceptMappings(object):
+    def __init__(self, coded_concept_map_list):
+
+        self.concept_coded_map_list = coded_concept_map_list
+        self.map_dict = {}
+        for coded_concept_map in coded_concept_map_list:
+            self.map_dict[coded_concept_map.coded_conept.key()] = coded_concept_map.coded_concept_tuple
+
+class CodedConceptTuple(object):
+    def __init__(self, code_or_code_list):
+
+        if type(code_or_code_list) in (list, tuple):
+            self.multiple = True
+        else:
+            self.multiple = False
+
+        if not self.multiple:
+            self.tuple = (code_or_code_list,)
+        elif type(code_or_code_list) == tuple:
+            self.tuple = code_or_code_list
+        elif type(code_or_code_list) == list:
+            self.tuple = tuple(code_or_code_list)
+        else:
+            raise ValueError("Input must either be a single code a list or tuple")
+
+    def get(self):
+        if self.multiple:
+            return self.tuple
+        else:
+            return self.tuple[0]
+
+
+class CodedConceptMap(object):
+    def __init__(self, coded_concept, coded_concept_tuple):
+        self.coded_concept = coded_concept
+        self.mapped_tuple = coded_concept_tuple
+
+
 class CodedConcept(object):
-    def __init__(self, code, vocabulary, description):
+    def __init__(self, code, vocabulary, description, metadata=None):
         self.code = code
         self.description = description
         self.vocabulary = vocabulary
+
+        if metadata is None:
+            self.metadata = {}
+        else:
+            self.metadata = metadata
 
     def key(self):
         return self.code + "|" + self.vocabulary
@@ -23,7 +67,7 @@ class CodedConcept(object):
         return f"{self.code} - {self.description} ({self.vocabulary})"
 
     def to_struct(self):
-        return {"code": self.code, "description": self.description, "vocabulary": self.vocabulary}
+        return {"code": self.code, "description": self.description, "vocabulary": self.vocabulary, "metadata": self.metadata}
 
 
 class CodedConceptSetChange(object):
@@ -326,7 +370,7 @@ def concepts_df_to_concept_set(df, concept_set_name):
 
 
 def concept_dict_to_concept(concept_dict):
-    return CodedConcept(concept_dict["code"], concept_dict["vocabulary"], concept_dict["description"])
+    return CodedConcept(concept_dict["code"], concept_dict["vocabulary"], concept_dict["description"], concept_dict["metadata"])
 
 
 def recreate_concept_set_from_struct(concept_set_struct):
@@ -357,3 +401,36 @@ def recreate_concept_set_from_struct(concept_set_struct):
     concept_set.history.changes = history_changes
 
     return concept_set
+
+def build_icd10cm_snomed_code_mapper(code_mapping_struct_list):
+
+    code_mapping_list = []
+
+    for code_mapping_struct in code_mapping_struct_list:
+
+        description = code_mapping_struct["concept_name"]
+        code = code_mapping_struct["concept_code"]
+        vocabulary = code_mapping_struct["vocabulary_id"]
+        metadata = {"concept_id": code_mapping_struct["concept_id"]}
+
+        code_mapped_from_obj  = CodedConcept(code, vocabulary, description, metadata)
+
+        mapped_concept_struct_list = code_mapping_struct["mapped_concept_list"]
+
+        mapped_coding_obj_list = []
+        for mapped_concept_struct in mapped_concept_struct_list:
+            mapped_description = mapped_concept_struct["mapped_concept_name"]
+            mapped_code = mapped_concept_struct["mapped_concept_code"]
+            mapped_vocabulary = mapped_concept_struct["mapped_vocabulary_id"]
+            mapped_metadata = {"concept_id": mapped_concept_struct["mapped_concept_id"]}
+
+            mapped_coded_list_obj = CodedConcept(mapped_code, mapped_vocabulary, mapped_description, mapped_metadata)
+            mapped_coding_obj_list += [mapped_coded_list_obj]
+
+        mapped_tuple_obj = CodedConceptTuple(mapped_coding_obj_list)
+
+        code_mapping_list += [CodedConceptMap(code_mapped_from_obj, mapped_tuple_obj)]
+
+    code_mapper_obj = CodedConceptMappings(code_mapping_list)
+
+    return code_mapper_obj
