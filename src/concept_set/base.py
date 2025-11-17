@@ -2,6 +2,7 @@ import io
 import csv
 import json
 import datetime
+import requests
 
 
 def json_datetime_serializer(obj):
@@ -10,14 +11,18 @@ def json_datetime_serializer(obj):
     raise TypeError(f"Object of type {obj.__class__.__name__} is not JSON serializable")
 
 
-
 class CodedConceptMappings(object):
     def __init__(self, coded_concept_map_list):
 
         self.concept_coded_map_list = coded_concept_map_list
         self.map_dict = {}
         for coded_concept_map in coded_concept_map_list:
-            self.map_dict[coded_concept_map.coded_conept.key()] = coded_concept_map.coded_concept_tuple
+            self.map_dict[coded_concept_map.coded_concept.key()] = coded_concept_map.mapped_tuple.tuple
+
+
+    def map(self, coded_concept_obj):
+        return self.map_dict[coded_concept_obj.key()]
+
 
 class CodedConceptTuple(object):
     def __init__(self, code_or_code_list):
@@ -35,6 +40,16 @@ class CodedConceptTuple(object):
             self.tuple = tuple(code_or_code_list)
         else:
             raise ValueError("Input must either be a single code a list or tuple")
+
+    def __repr__(self):
+        if self.multiple:
+            code_tuple = "("
+            for code in self.tuple:
+                code_tuple += f"{code}, "
+            code_tuple = code_tuple[:-2] + ")"
+            return code_tuple
+        else:
+            return str(self.tuple[0])
 
     def get(self):
         if self.multiple:
@@ -434,3 +449,6 @@ def build_icd10cm_snomed_code_mapper(code_mapping_struct_list):
     code_mapper_obj = CodedConceptMappings(code_mapping_list)
 
     return code_mapper_obj
+
+def load_latest_icd10cm_snomed_concept_mapper():
+    requests.get()

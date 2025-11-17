@@ -163,10 +163,13 @@ G44.201	Tension-type headache, unspecified, intractable	ICD10CM"""
         concept_set_1 = CodedConceptSet("Pain 1", self.concept_list_1)
 
     def test_concept_map_creation(self):
-        concept_set_1 = CodedConceptSet("Pain 1", self.concept_list_1)
+
+        coded_concept_1 = CodedConcept("M84.60XK", "ICD10CM", "Pathological fracture in other disease, unspecified site, subsequent encounter for fracture with nonunion")
+
+        coded_concept_2 = CodedConcept("E11.3511", "ICD10CM", "Type 2 diabetes mellitus with proliferative diabetic retinopathy with macular edema, right eye")
 
         concept_struct_map = []
-        with open("./icd10cm_snomed_ohdsi_map.jsonl") as f:
+        with open("./sample_icd10cm_snomed_ohdsi_map.jsonl") as f:
             for line in f:
                 concept_struct_map += [json.loads(line)]
 
@@ -174,6 +177,14 @@ G44.201	Tension-type headache, unspecified, intractable	ICD10CM"""
 
         concept_mapper_obj = build_icd10cm_snomed_code_mapper(concept_struct_map)
         self.assertIsNotNone(concept_mapper_obj)
+
+        mapped_concept_obj = concept_mapper_obj.map(coded_concept_1)
+
+        mapped_concept_str_1 = str(mapped_concept_obj)
+
+        print(str(coded_concept_1) + " -> " + mapped_concept_str_1)
+        print(concept_mapper_obj.map(coded_concept_2))
+
 
 if __name__ == '__main__':
     unittest.main()
