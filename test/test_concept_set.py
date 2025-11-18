@@ -4,7 +4,6 @@ import concept_set
 from concept_set.base import (CodedConcept, CodedConceptSet, CodedConceptSetChange, CompareCodedConceptSets,
                               build_icd10cm_snomed_code_mapper, load_latest_icd10cm_snomed_concept_mapper)
 import json
-import pandas as pd
 
 def helper_concept_list(concept_set_string):
     concept_list = []
@@ -118,7 +117,6 @@ G44.201	Tension-type headache, unspecified, intractable	ICD10CM"""
         self.assertEqual(6, len(p1_v0))
 
         p1_recreated = CodedConceptSet("Pain 1 Recreated", self.concept_list_1)
-
         self.assertEqual(p1_v0, p1_recreated)
 
         p1.history_summary()
@@ -126,7 +124,6 @@ G44.201	Tension-type headache, unspecified, intractable	ICD10CM"""
         cs_struct = p1.to_struct()
 
         self.assertIsNotNone(cs_struct)
-
         p1_json_dump = p1.to_json()
 
         with open("./output/p1.json", "w") as f:
@@ -193,6 +190,14 @@ G44.201	Tension-type headache, unspecified, intractable	ICD10CM"""
         mapped_concept_obj_3 = full_icd10cm_snomed_mapper.map(coded_concept_3)
 
         print(str(coded_concept_3) + " -> " + str(mapped_concept_obj_3))
+
+        coded_concept_4 = CodedConcept("Z87.441", "ICD10CM", "Personal history of nephrotic syndrome")
+
+        mapped_concept_obj_4 = full_icd10cm_snomed_mapper.map(coded_concept_4)
+
+        self.assertIsNone(mapped_concept_obj_4)
+
+
 
 if __name__ == '__main__':
     unittest.main()

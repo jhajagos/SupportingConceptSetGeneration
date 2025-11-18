@@ -21,11 +21,15 @@ class CodedConceptMappings(object):
         self.default_source_vocabulary = default_source_vocabulary
 
         for coded_concept_map in coded_concept_map_list:
-            self.map_dict[coded_concept_map.coded_concept.key()] = coded_concept_map.mapped_tuple.tuple
-
+            concept_key = coded_concept_map.coded_concept.key()
+            self.map_dict[concept_key] = coded_concept_map.mapped_tuple.tuple
 
     def map(self, coded_concept_obj):
-        return self.map_dict[coded_concept_obj.key()]
+        concept_key = coded_concept_obj.key()
+        if concept_key in self.map_dict:
+            return self.map_dict[coded_concept_obj.key()]
+        else:
+            return None
 
 
 class CodedConceptTuple(object):
@@ -154,8 +158,9 @@ class CodedConceptSet(object):
 
         if concepts is not None:
             for concept in concepts:
-                concept_key = concept.key()
-                self.concept_dict[concept_key] = concept
+                if concept is not None:
+                    concept_key = concept.key()
+                    self.concept_dict[concept_key] = concept
 
         self.history = CodedConceptSetHistory(self)
 
