@@ -83,7 +83,6 @@ class TestLLM(unittest.TestCase):
         print(snomed_mapper_obj.create_code_list_for_athena())
 
 
-
     def test_build_vector_store(self):
 
         document_list = csl.generate_icd10_code_list_to_load()

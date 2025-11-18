@@ -252,8 +252,9 @@ class MapConceptSetWithLLM(object):
                 self.mapped_concepts += [self.mapper_obj.map(coded_concept)]
 
             for mapped_tuple in self.mapped_concepts:
-                for mapped_concept_coded in mapped_tuple:
-                    self.flattened_mapped_concepts += [mapped_concept_coded]
+                if mapped_tuple is not None:
+                    for mapped_concept_coded in mapped_tuple:
+                        self.flattened_mapped_concepts += [mapped_concept_coded]
 
             self.mapped_concept_set = CodedConceptSet(f"mapper='{self.mapper_obj.name}'", self.flattened_mapped_concepts)
 
