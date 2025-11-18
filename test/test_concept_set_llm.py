@@ -1,5 +1,7 @@
 import json
 import unittest
+
+import concept_set.base
 import concept_set.llm as csl
 import concept_set.base as cs
 from langchain_chroma import Chroma
@@ -32,8 +34,9 @@ class TestLLM(unittest.TestCase):
 
         llm_big = csl.LLMCreateWrapper("azure_openai", None, self.config, 0.1)
         #ccsr_obj = csl.CCSRWithFiltering(llm_big, "Find CCSR codes for Type 1 diabetes and Type 2 diabetes", "Filter the code list to include codes that are related to impairments of vision",  self.config, 50)
-        ccsr_obj = csl.CCSRWithFiltering(llm_big, "Find CCSR codes for breast cancer",
-                                         "Only include codes related to metastatic breast cancer and exlcude codes related to screening",
+
+        ccsr_obj = csl.CCSRWithFiltering(llm_big, "Find CCSR codes for type 1 and/or type 2 diabetes",
+                                         "Only include codes related diabetes and effect of diabetes on vision",
                                          self.config, 50)
         ccsr_obj.select_high_level_codes()
 
@@ -54,6 +57,31 @@ class TestLLM(unittest.TestCase):
 
         with open("./output/ccsr_test_concept_set_generated.json", "w") as f:
             f.write(ccsr_obj.final_concept_set.to_json())
+
+    def test_map_codes_snomed(self):
+
+        llm_big = csl.LLMCreateWrapper("azure_openai", None, self.config, 0.1)
+
+        with open("./output/ccsr_test_concept_set_generated.json") as f:
+            ccsr_struct = json.load(f)
+
+        ccsr_concept_set = concept_set.base.recreate_concept_set_from_struct(ccsr_struct)
+
+        mapper_obj = cs.load_latest_icd10cm_snomed_concept_mapper()
+
+        snomed_mapper_obj = csl.MapConceptSetWithLLM(llm_big, ccsr_concept_set, mapper_obj,
+                                 "Only include codes that include both diabetes and vision impairments")
+
+        snomed_mapper_obj.map_concepts()
+
+        snomed_mapper_obj.filter_codes()
+
+        snomed_mapper_obj.mapped_concept_set.history_summary()
+
+        snomed_mapper_obj.mapped_concept_set.summary()
+
+        print(snomed_mapper_obj.create_code_list_for_athena())
+
 
 
     def test_build_vector_store(self):

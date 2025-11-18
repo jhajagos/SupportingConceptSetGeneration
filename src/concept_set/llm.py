@@ -225,6 +225,83 @@ class VectorSearchWithFilter(object):
             self.final_concept_set.register_change(CodedConceptSetChange([], cs_obj.left_difference, updated_concept_set.name, "remove"))
 
 
+class MapConceptSetWithLLM(object):
+    def __init__(self, llm, concept_set, mapper_obj, filter_prompt, chunk_size=25):
+        self.concept_set = concept_set
+        self.llm = llm
+        self.mapper_obj = mapper_obj
+        self.filter_prompt = filter_prompt
+        self.mapped_concepts = []
+        self.flattened_mapped_concepts = []
+        self.mapped_concept_set = None
+        self.chunk_size = chunk_size
+        self.default_vocabulary = mapper_obj.default_mapped_vocabulary
+
+        self.statuses = {0: "not_started",
+                         1: "map_concepts",
+                         2: "filter_codes",
+                         3: "filter_codes_again"}
+
+        self.status = 0
+
+    def map_concepts(self):
+
+        self.mapped_concepts = []
+        if self.status == 0:
+            for coded_concept in self.concept_set:
+                self.mapped_concepts += [self.mapper_obj.map(coded_concept)]
+
+            for mapped_tuple in self.mapped_concepts:
+                for mapped_concept_coded in mapped_tuple:
+                    self.flattened_mapped_concepts += [mapped_concept_coded]
+
+            self.mapped_concept_set = CodedConceptSet(f"mapper='{self.mapper_obj.name}'", self.flattened_mapped_concepts)
+
+            self.status = 1
+
+        else:
+            raise Exception("Mapping already started")
+
+    def filter_codes(self):
+        if self.status == 1:
+            filtered_code_list = filter_concept_set_with_llm(self.mapped_concept_set, self.llm.return_llm(),
+                                                             self.filter_prompt, chunk_size=self.chunk_size,
+                                                             default_vocabulary=self.default_vocabulary)
+            updated_concept_set  = CodedConceptSet(f"mapped_concept_set='{self.concept_set.name}' to '{self.default_vocabulary}' & filter_prompt='{self.filter_prompt}'", filtered_code_list)
+
+            cs_obj = concept_set.base.CompareCodedConceptSets(self.mapped_concept_set, updated_concept_set)
+
+            self.mapped_concept_set.register_change(CodedConceptSetChange([], cs_obj.left_difference, updated_concept_set.name, "remove"))
+
+            self.status = 2
+        else:
+            raise Exception("Codes not retrieved yet")
+
+    def filter_codes_again(self, additional_filter_prompt):
+        if self.status == 2:
+            filtered_code_list = filter_concept_set_with_llm(self.mapped_concept_set, self.llm.return_llm(),
+                                                             additional_filter_prompt, chunk_size=self.chunk_size,
+                                                             default_vocabulary=self.default_vocabulary)
+
+            updated_concept_set = CodedConceptSet(f"filter_prompt='{additional_filter_prompt}", filtered_code_list)
+
+            cs_obj = concept_set.base.CompareCodedConceptSets(self.mapped_concept_set, updated_concept_set)
+
+            self.mapped_concept_set.register_change(
+                CodedConceptSetChange([], cs_obj.left_difference, updated_concept_set.name, "remove"))
+
+    def get_mapped_concept_ids(self):
+        if self.status >= 1:
+            mapped_concept_ids = []
+            for code in self.mapped_concept_set:
+                mapped_concept_ids += [code.metadata["concept_id"]]
+            return mapped_concept_ids
+        else:
+            raise Exception("Mapping not yet started")
+
+    def create_code_list_for_athena(self):
+        return "\n".join([str(x) for x in self.get_mapped_concept_ids()]).rstrip()
+
 
 def code_list_to_df(code_list):
     return pd.DataFrame(code_list.dict()["codes"])
@@ -310,6 +387,7 @@ def get_code_list_vector_search(vector_db, search_term, n_results=100):
         code_list += [CodedConcept(code["code"], code["vocabulary"], code["description"])]
 
     return code_list
+
 
 def generate_icd10_code_list_to_load():
     full_icd10cm_df = pd.read_csv("https://raw.githubusercontent.com/jhajagos/SupportingConceptSetGeneration/refs/heads/main/comorbidities/data/generated_from_nb/Build_ICD10CM_tables/umls_ohdsi_icd10_pt.csv")

@@ -2,7 +2,7 @@ import unittest
 
 import concept_set
 from concept_set.base import (CodedConcept, CodedConceptSet, CodedConceptSetChange, CompareCodedConceptSets,
-                              CodedConceptTuple, CodedConceptMap, CodedConceptMappings, build_icd10cm_snomed_code_mapper)
+                              build_icd10cm_snomed_code_mapper, load_latest_icd10cm_snomed_concept_mapper)
 import json
 import pandas as pd
 
@@ -142,6 +142,7 @@ G44.201	Tension-type headache, unspecified, intractable	ICD10CM"""
         p1_with_versions_recreated.history_summary()
 
 
+
     def test_iteration(self):
         p1 = CodedConceptSet("Pain 1", self.concept_list_1)
         i = 0
@@ -178,13 +179,20 @@ G44.201	Tension-type headache, unspecified, intractable	ICD10CM"""
         concept_mapper_obj = build_icd10cm_snomed_code_mapper(concept_struct_map)
         self.assertIsNotNone(concept_mapper_obj)
 
-        mapped_concept_obj = concept_mapper_obj.map(coded_concept_1)
+        mapped_concept_obj_1 = concept_mapper_obj.map(coded_concept_1)
 
-        mapped_concept_str_1 = str(mapped_concept_obj)
+        mapped_concept_str_1 = str(mapped_concept_obj_1)
 
         print(str(coded_concept_1) + " -> " + mapped_concept_str_1)
-        print(concept_mapper_obj.map(coded_concept_2))
+        print(str(coded_concept_2) + " -> " + str(concept_mapper_obj.map(coded_concept_2)))
 
+        full_icd10cm_snomed_mapper = load_latest_icd10cm_snomed_concept_mapper()
+
+        coded_concept_3 = CodedConcept("M84.563S", "ICD10CM", "Pathological fracture in neoplastic disease, right fibula, sequela")
+
+        mapped_concept_obj_3 = full_icd10cm_snomed_mapper.map(coded_concept_3)
+
+        print(str(coded_concept_3) + " -> " + str(mapped_concept_obj_3))
 
 if __name__ == '__main__':
     unittest.main()

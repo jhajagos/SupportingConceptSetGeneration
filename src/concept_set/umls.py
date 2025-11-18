@@ -40,7 +40,19 @@ def umls_request(url, api_key=None, additional_params={}):
   params.update(additional_params)
 
   logging.info(f"Making request to {url} with params {params}")
-  response = requests.get(url, params=params).json()
+  try:
+      response = requests.get(url, params=params).json()
+  except requests.JSONDecodeError:
+      response = requests.get(url, params=params)
+
+      print(url, params)
+
+      # print("Response:")
+      # print(response)
+      # print("Content:")
+      # print(response.text)
+
+      raise RuntimeError
 
   end_time = time.time()
   logging.info(f"Request took {end_time - start_time} seconds")

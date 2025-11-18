@@ -12,10 +12,14 @@ def json_datetime_serializer(obj):
 
 
 class CodedConceptMappings(object):
-    def __init__(self, coded_concept_map_list):
+    def __init__(self, coded_concept_map_list,  name, default_source_vocabulary=None, default_mapped_vocabulary=None):
 
         self.concept_coded_map_list = coded_concept_map_list
         self.map_dict = {}
+        self.name = name
+        self.default_mapped_vocabulary = default_mapped_vocabulary
+        self.default_source_vocabulary = default_source_vocabulary
+
         for coded_concept_map in coded_concept_map_list:
             self.map_dict[coded_concept_map.coded_concept.key()] = coded_concept_map.mapped_tuple.tuple
 
@@ -446,9 +450,16 @@ def build_icd10cm_snomed_code_mapper(code_mapping_struct_list):
 
         code_mapping_list += [CodedConceptMap(code_mapped_from_obj, mapped_tuple_obj)]
 
-    code_mapper_obj = CodedConceptMappings(code_mapping_list)
+    code_mapper_obj = CodedConceptMappings(code_mapping_list,  "ICD10CM to SNOMED Mapper", "ICD10CM", "SNOMED")
 
     return code_mapper_obj
 
 def load_latest_icd10cm_snomed_concept_mapper():
-    requests.get()
+    r_obj = requests.get("https://raw.githubusercontent.com/jhajagos/SupportingConceptSetGeneration/refs/heads/main/comorbidities/data/generated_from_nb/build_multimap/icd10cm_mapped_to_snomed.jsonl")
+
+    code_mapping_struct_list = []
+    for line in r_obj.content.decode("utf-8").splitlines():
+        line_struct = json.loads(line)
+        code_mapping_struct_list += [line_struct]
+
+    return build_icd10cm_snomed_code_mapper(code_mapping_struct_list)
