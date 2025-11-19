@@ -84,7 +84,7 @@ class CodedConcept(object):
             self.metadata = metadata
 
     def key(self):
-        return self.code + "|" + self.vocabulary
+        return str(self.code) + "|" + str(self.vocabulary)
 
     def __repr__(self):
         return f"{self.code} - {self.description} ({self.vocabulary})"

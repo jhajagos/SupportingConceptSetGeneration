@@ -30,12 +30,10 @@ class TestLLM(unittest.TestCase):
 
     def test_ccsr_filter(self):
 
-        # llm_big = csl.LLMCreateWrapper("ollama", "ollama_medium_model", self.config, 0.1)
 
-        llm_big = csl.LLMCreateWrapper("azure_openai", None, self.config, 0.1)
-        #ccsr_obj = csl.CCSRWithFiltering(llm_big, "Find CCSR codes for Type 1 diabetes and Type 2 diabetes", "Filter the code list to include codes that are related to impairments of vision",  self.config, 50)
+        llm_openai = csl.LLMCreateWrapper("azure_openai", None, self.config, 0.1)
 
-        ccsr_obj = csl.CCSRWithFiltering(llm_big, "Find CCSR codes for type 1 and/or type 2 diabetes",
+        ccsr_obj = csl.CCSRWithFiltering(llm_openai, "Find CCSR codes for type 1 and/or type 2 diabetes",
                                          "Only include codes related diabetes and effect of diabetes on vision",
                                          self.config, 50)
         ccsr_obj.select_high_level_codes()
@@ -96,30 +94,55 @@ class TestLLM(unittest.TestCase):
 
 
     def test_vector_search(self):
-        #llm_big = csl.LLMCreateWrapper("ollama", "ollama_medium_model", self.config, 0.1)
 
-        llm_big = csl.LLMCreateWrapper("azure_openai", None, self.config, 0.1)
+        llm_openai = csl.LLMCreateWrapper("azure_openai", None, self.config, 0.1)
+
         hf_sentence_embedder = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
         vectordb_obj = Chroma(persist_directory=self.config["chroma_persist_directory"], embedding_function=hf_sentence_embedder)
 
-        filter_obj = csl.VectorSearchWithFilter(llm_big, vectordb_obj, "severe headaches or migraines",
+        filter_obj_1 = csl.VectorSearchWithFilter(llm_openai, vectordb_obj, "severe headaches or migraines",
                                                             "Filter codes to include those that describe headaches or migraines",
                                                             500)
-        filter_obj.search_vector_db()
-        filter_obj.filter_codes()
+        filter_obj_1.search_vector_db()
+        filter_obj_1.filter_codes()
 
-        cs.CompareCodedConceptSets(filter_obj.retrieved_codes, filter_obj.final_concept_set).summary()
+        print("Show which codes were filtered out:")
+        print("")
 
-        filter_obj.filter_codes_again("Filter codes to only include those that include cluster headaches")
+        cs.CompareCodedConceptSets(filter_obj_1.retrieved_codes, filter_obj_1.final_concept_set).summary()
 
-        filter_obj.final_concept_set.history_summary()
+        print("Compare two LLM models (OpenAI versus locally hosted Ollama)")
+        print("")
 
-        filter_obj.final_concept_set.summary()
+        # Ollama model
+        llm_ollama = csl.LLMCreateWrapper("ollama", "ollama_medium_model", self.config, 0.1)
 
-        filter_obj.final_concept_set.to_csv("./output/vector_search_test_concept_set_generated.csv")
+        filter_obj_2 = csl.VectorSearchWithFilter(llm_ollama, vectordb_obj, "severe headaches or migraines",
+                                                  "Filter codes to include those that describe headaches or migraines",
+                                                  500)
 
-        with open("./output/vector_search_test_concept_set_generated.json", "w") as f:
-            f.write(filter_obj.final_concept_set.to_json())
+        filter_obj_2.search_vector_db()
+        filter_obj_2.filter_codes()
+
+        cs.CompareCodedConceptSets(filter_obj_2.final_concept_set, filter_obj_1.final_concept_set).summary()
+
+        # Additional filter
+
+        print("Additional filtering by prompts (Cluster headaches):")
+        print("")
+
+        filter_obj_1.filter_codes_again("Filter codes to only include those that include cluster headaches")
+
+        filter_obj_1.final_concept_set.history_summary()
+
+        filter_obj_1.final_concept_set.summary()
+
+        filter_obj_1.final_concept_set.to_csv("./output/vector_search_test_concept_set_generated.csv")
+
+        with open("./output/openai_vector_search_test_concept_set_generated.json", "w") as f:
+            f.write(filter_obj_1.final_concept_set.to_json())
+
+
 
 
 
